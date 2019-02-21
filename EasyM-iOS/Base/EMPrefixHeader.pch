@@ -1,0 +1,57 @@
+//
+//  EMPrefixHeader.pch
+//  EasyM-iOS
+//
+//  Created by SeanCST on 2019/2/21.
+//  Copyright © 2019 NilOrg. All rights reserved.
+//
+
+#ifndef EMPrefixHeader_pch
+#define EMPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+// URL
+#define BaseUrl @"http://127.0.0.1:3000"
+
+#import "SDAutoLayout.h"
+#import "AFNetworking.h"
+
+
+// 颜色
+#define EMRGBColor(r, g, b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1]
+#define EMBackgroundColor EMRGBColor(39, 108, 208)
+#define EMButtonClickedColor EMRGBColor(85, 154, 247)
+#define EMSeperateLineColor EMRGBColor(239, 237, 241)
+#define EMTabBarTitleColor EMRGBColor(44, 44, 44)
+#define EMTabBarTitleSelectedColor EMRGBColor(18, 150, 219)
+
+//获取导航栏+状态栏的高度
+
+#define GetRectNavAndStatusHight \
+({\
+CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];\
+CGRect rectNav = self.navigationController.navigationBar.frame;\
+( rectStatus.size.height+ rectNav.size.height);\
+})\
+
+// 判断是否是iPhone X
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+// 状态栏高度
+#define STATUS_BAR_HEIGHT (iPhoneX ? 44.f : 20.f)
+// 导航栏高度
+#define NAVIGATION_BAR_HEIGHT (iPhoneX ? 88.f : 64.f)
+// tabBar高度
+#define TAB_BAR_HEIGHT (iPhoneX ? (49.f+34.f) : 49.f)
+// home indicator
+#define HOME_INDICATOR_HEIGHT (iPhoneX ? 34.f : 0.f)
+
+// 屏幕宽高
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define EMWeakSelf __weak typeof(self) weakSelf = self
+
+
+#endif /* EMPrefixHeader_pch */

@@ -14,6 +14,11 @@
 		1451A4AF21DF14FD00012930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451A4AD21DF14FD00012930 /* LaunchScreen.storyboard */; };
 		1451A4B221DF14FD00012930 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4B121DF14FD00012930 /* main.m */; };
 		1451A4BC21DF14FD00012930 /* EasyM_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4BB21DF14FD00012930 /* EasyM_iOSTests.m */; };
+		14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6DE8221EC931006D5326 /* EMLoginViewController.m */; };
+		14BC6DF0221EDB95006D5326 /* EMTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6DEF221EDB95006D5326 /* EMTabBarController.m */; };
+		14BC6DF3221EDC4F006D5326 /* EMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6DF2221EDC4F006D5326 /* EMNavigationController.m */; };
+		14BC6DFF221EDD46006D5326 /* EMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6DFE221EDD46006D5326 /* EMHomeController.m */; };
+		5880BD6C956FB0588AE8C962 /* libPods-EasyM-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,18 @@
 		1451A4B721DF14FD00012930 /* EasyM-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EasyM-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1451A4BB21DF14FD00012930 /* EasyM_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyM_iOSTests.m; sourceTree = "<group>"; };
 		1451A4BD21DF14FD00012930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14BC6DE7221EC931006D5326 /* EMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMLoginViewController.h; sourceTree = "<group>"; };
+		14BC6DE8221EC931006D5326 /* EMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMLoginViewController.m; sourceTree = "<group>"; };
+		14BC6DEA221EC9E4006D5326 /* EMPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMPrefixHeader.pch; sourceTree = "<group>"; };
+		14BC6DEE221EDB95006D5326 /* EMTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMTabBarController.h; sourceTree = "<group>"; };
+		14BC6DEF221EDB95006D5326 /* EMTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMTabBarController.m; sourceTree = "<group>"; };
+		14BC6DF1221EDC4F006D5326 /* EMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMNavigationController.h; sourceTree = "<group>"; };
+		14BC6DF2221EDC4F006D5326 /* EMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMNavigationController.m; sourceTree = "<group>"; };
+		14BC6DFD221EDD46006D5326 /* EMHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMHomeController.h; sourceTree = "<group>"; };
+		14BC6DFE221EDD46006D5326 /* EMHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHomeController.m; sourceTree = "<group>"; };
+		1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyM-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyM-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6B7107570AE021FE957E312 /* Pods-EasyM-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyM-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5880BD6C956FB0588AE8C962 /* libPods-EasyM-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		056F4716EA32E6738E223415 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6B7107570AE021FE957E312 /* Pods-EasyM-iOS.debug.xcconfig */,
+				1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		1451A49621DF14FA00012930 = {
 			isa = PBXGroup;
 			children = (
 				1451A4A121DF14FA00012930 /* EasyM-iOS */,
 				1451A4BA21DF14FD00012930 /* EasyM-iOSTests */,
 				1451A4A021DF14FA00012930 /* Products */,
+				056F4716EA32E6738E223415 /* Pods */,
+				E6AC1A39C7D99B1A7EDE1160 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,15 +110,14 @@
 		1451A4A121DF14FA00012930 /* EasyM-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1451A4A221DF14FB00012930 /* AppDelegate.h */,
-				1451A4A321DF14FB00012930 /* AppDelegate.m */,
-				1451A4A521DF14FB00012930 /* ViewController.h */,
-				1451A4A621DF14FB00012930 /* ViewController.m */,
-				1451A4A821DF14FB00012930 /* Main.storyboard */,
+				14BC6DE3221EC89B006D5326 /* Login */,
+				14BC6DE4221EC89B006D5326 /* Home */,
+				14BC6DE2221EC89B006D5326 /* Discovery */,
+				14BC6DE5221EC89B006D5326 /* Me */,
+				14BC6DE6221EC8C8006D5326 /* Base */,
 				1451A4AB21DF14FD00012930 /* Assets.xcassets */,
 				1451A4AD21DF14FD00012930 /* LaunchScreen.storyboard */,
 				1451A4B021DF14FD00012930 /* Info.plist */,
-				1451A4B121DF14FD00012930 /* main.m */,
 			);
 			path = "EasyM-iOS";
 			sourceTree = "<group>";
@@ -103,6 +131,137 @@
 			path = "EasyM-iOSTests";
 			sourceTree = "<group>";
 		};
+		14BC6DE2221EC89B006D5326 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				14BC6DFC221EDD26006D5326 /* Controller */,
+				14BC6DFB221EDD26006D5326 /* Model */,
+				14BC6DFA221EDD26006D5326 /* View */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		14BC6DE3221EC89B006D5326 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				14BC6DE7221EC931006D5326 /* EMLoginViewController.h */,
+				14BC6DE8221EC931006D5326 /* EMLoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		14BC6DE4221EC89B006D5326 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				14BC6DF4221EDD07006D5326 /* Controller */,
+				14BC6DF5221EDD07006D5326 /* Model */,
+				14BC6DF6221EDD07006D5326 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		14BC6DE5221EC89B006D5326 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				14BC6DF9221EDD19006D5326 /* Controller */,
+				14BC6DF8221EDD19006D5326 /* Model */,
+				14BC6DF7221EDD19006D5326 /* View */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		14BC6DE6221EC8C8006D5326 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1451A4A221DF14FB00012930 /* AppDelegate.h */,
+				1451A4A321DF14FB00012930 /* AppDelegate.m */,
+				1451A4A521DF14FB00012930 /* ViewController.h */,
+				1451A4A621DF14FB00012930 /* ViewController.m */,
+				1451A4A821DF14FB00012930 /* Main.storyboard */,
+				1451A4B121DF14FD00012930 /* main.m */,
+				14BC6DEA221EC9E4006D5326 /* EMPrefixHeader.pch */,
+				14BC6DEE221EDB95006D5326 /* EMTabBarController.h */,
+				14BC6DEF221EDB95006D5326 /* EMTabBarController.m */,
+				14BC6DF1221EDC4F006D5326 /* EMNavigationController.h */,
+				14BC6DF2221EDC4F006D5326 /* EMNavigationController.m */,
+			);
+			name = Base;
+			path = "EasyM-iOS/Base";
+			sourceTree = SOURCE_ROOT;
+		};
+		14BC6DF4221EDD07006D5326 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14BC6DFD221EDD46006D5326 /* EMHomeController.h */,
+				14BC6DFE221EDD46006D5326 /* EMHomeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		14BC6DF5221EDD07006D5326 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14BC6DF6221EDD07006D5326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14BC6DF7221EDD19006D5326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14BC6DF8221EDD19006D5326 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14BC6DF9221EDD19006D5326 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		14BC6DFA221EDD26006D5326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14BC6DFB221EDD26006D5326 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14BC6DFC221EDD26006D5326 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E6AC1A39C7D99B1A7EDE1160 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,9 +269,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1451A4C021DF14FD00012930 /* Build configuration list for PBXNativeTarget "EasyM-iOS" */;
 			buildPhases = (
+				9C821C6F074E9603E5EBB018 /* [CP] Check Pods Manifest.lock */,
 				1451A49B21DF14FA00012930 /* Sources */,
 				1451A49C21DF14FA00012930 /* Frameworks */,
 				1451A49D21DF14FA00012930 /* Resources */,
+				524E48098F591C8B655E1F07 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,6 +308,7 @@
 		1451A49721DF14FA00012930 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = EM;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = NilOrg;
 				TargetAttributes = {
@@ -198,14 +360,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		524E48098F591C8B655E1F07 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C821C6F074E9603E5EBB018 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyM-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1451A49B21DF14FA00012930 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */,
+				14BC6DF3221EDC4F006D5326 /* EMNavigationController.m in Sources */,
 				1451A4A721DF14FB00012930 /* ViewController.m in Sources */,
 				1451A4B221DF14FD00012930 /* main.m in Sources */,
 				1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */,
+				14BC6DFF221EDD46006D5326 /* EMHomeController.m in Sources */,
+				14BC6DF0221EDB95006D5326 /* EMTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,9 +564,11 @@
 		};
 		1451A4C121DF14FD00012930 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6B7107570AE021FE957E312 /* Pods-EasyM-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Base/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,9 +582,11 @@
 		};
 		1451A4C221DF14FD00012930 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Base/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
