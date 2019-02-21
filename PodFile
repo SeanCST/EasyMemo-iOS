@@ -1,0 +1,9 @@
+platform :ios, '8.0'
+
+target 'EasyM-iOS' do
+    pod 'AFNetworking', '~> 3.2.1'
+    pod 'YYModel'
+    pod 'MJRefresh'
+    pod 'SDAutoLayout', '~> 2.1.3'
+    pod 'SDWebImage'
+end
