@@ -1,5 +1,5 @@
 //
-//  EMHomeController.h
+//  EMHomeViewController.h
 //  EasyM-iOS
 //
 //  Created by SeanCST on 2019/2/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EMHomeController : UIViewController
+@interface EMHomeViewController : UIViewController
 
 @end

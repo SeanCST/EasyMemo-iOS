@@ -8,6 +8,8 @@
 
 #import "EMTabBarController.h"
 #import "EMNavigationController.h"
+#import "EMHomeViewController.h"
+#import "EMDiscoveryViewController.h"
 
 @interface EMTabBarController ()
 
@@ -22,11 +24,11 @@
 
 
 - (void)setupChildVc {
-    UIViewController *homeVc = [[UIViewController alloc] init];
-    [self addOneChildVc:homeVc title:@"首页" imageName:@"tab_music" selectedImageName:@"tab_music_selected"];
+    EMHomeViewController *homeVc = [[EMHomeViewController alloc] init];
+    [self addOneChildVc:homeVc title:@"首页" imageName:@"tab_home" selectedImageName:@"tab_home_selected"];
     
-    UIViewController *localVc = [[UIViewController alloc] init];
-    [self addOneChildVc:localVc title:@"发现" imageName:@"tab_local" selectedImageName:@"tab_local_selected"];
+    EMDiscoveryViewController *localVc = [[EMDiscoveryViewController alloc] init];
+    [self addOneChildVc:localVc title:@"发现" imageName:@"tab_discovery" selectedImageName:@"tab_discovery_selected"];
     
     UIViewController *meVc = [[UIViewController alloc] init];
     [self addOneChildVc:meVc title:@"我" imageName:@"tab_me" selectedImageName:@"tab_me_selected"];
