@@ -10,6 +10,7 @@
 #import "EMNavigationController.h"
 #import "EMHomeViewController.h"
 #import "EMDiscoveryViewController.h"
+#import "EMMeViewController.h"
 
 @interface EMTabBarController ()
 
@@ -30,7 +31,7 @@
     EMDiscoveryViewController *localVc = [[EMDiscoveryViewController alloc] init];
     [self addOneChildVc:localVc title:@"发现" imageName:@"tab_discovery" selectedImageName:@"tab_discovery_selected"];
     
-    UIViewController *meVc = [[UIViewController alloc] init];
+    EMMeViewController *meVc = [[EMMeViewController alloc] init];
     [self addOneChildVc:meVc title:@"我" imageName:@"tab_me" selectedImageName:@"tab_me_selected"];
     
 }

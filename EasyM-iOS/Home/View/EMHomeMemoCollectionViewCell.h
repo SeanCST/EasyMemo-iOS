@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString *kHomeMemoCollectionViewCell = @"EMHomeMemoCollectionViewCell";
+//static NSString *kHomeMemoCollectionViewCell = @"EMHomeMemoCollectionViewCell";
 
 @interface EMHomeMemoCollectionViewCell : UICollectionViewCell
 

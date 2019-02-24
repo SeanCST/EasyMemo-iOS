@@ -22,7 +22,6 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    
     // 设置UI
     [self setupUI];
 }
@@ -76,7 +75,7 @@
     collectionView.delegate = self;
     collectionView.dataSource = self;
     collectionView.backgroundColor = [UIColor whiteColor];
-    [collectionView registerClass:[EMHomeMemoCollectionViewCell class] forCellWithReuseIdentifier:kHomeMemoCollectionViewCell];
+    [collectionView registerClass:[EMHomeMemoCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([EMHomeMemoCollectionViewCell class])];
     self.collectionView = collectionView;
 }
 
@@ -93,7 +92,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    EMHomeMemoCollectionViewCell *cell = (EMHomeMemoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kHomeMemoCollectionViewCell forIndexPath:indexPath];
+    EMHomeMemoCollectionViewCell *cell = (EMHomeMemoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EMHomeMemoCollectionViewCell class]) forIndexPath:indexPath];
     cell.memoName = self.memoArr[indexPath.row];
     return cell;
 }
