@@ -9,6 +9,7 @@
 #import "EMHomeViewController.h"
 #import "EMHomeMemoCollectionView.h"
 #import "EMHomeMemoCollectionViewCell.h"
+#import "EMMemoPointListViewController.h"
 
 @interface EMHomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoArr;
@@ -80,10 +81,26 @@
 }
 
 - (void)addMemoButtonClicked {
-    NSString *memoName = [NSString stringWithFormat:@"笔记名—%ld", self.memoArr.count + 1];
-    [self.memoArr addObject:memoName];
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"新建笔记" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入笔记名";
+    }];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *memoNameTextField = alertController.textFields.firstObject;
+        NSLog(@"你输入的文本======%@", memoNameTextField.text);
+        
+        [self.memoArr addObject:memoNameTextField.text];
+        [self.collectionView reloadData];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
     
-    [self.collectionView reloadData];
+    // 弹出提示框
+    [self presentViewController:alertController animated:true completion:nil];
+    
+    
 }
 
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
@@ -95,6 +112,16 @@
     EMHomeMemoCollectionViewCell *cell = (EMHomeMemoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EMHomeMemoCollectionViewCell class]) forIndexPath:indexPath];
     cell.memoName = self.memoArr[indexPath.row];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
+
+    EMMemoPointListViewController *vc = [[EMMemoPointListViewController alloc] initWithMemoName:self.memoArr[indexPath.row]];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    self.hidesBottomBarWhenPushed = NO; // 加这一句防止放回的时候也不显示 tabbar 了
+
 }
 
 #pragma mark - 懒加载
