@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144772F1222562F700A99580 /* EMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F0222562F700A99580 /* EMSettingViewController.m */; };
+		144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F322256DA800A99580 /* EMSettingTableViewCell.m */; };
 		1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4A321DF14FB00012930 /* AppDelegate.m */; };
 		1451A4AA21DF14FB00012930 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451A4A821DF14FB00012930 /* Main.storyboard */; };
 		1451A4AF21DF14FD00012930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451A4AD21DF14FD00012930 /* LaunchScreen.storyboard */; };
@@ -40,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		144772EF222562F700A99580 /* EMSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingViewController.h; sourceTree = "<group>"; };
+		144772F0222562F700A99580 /* EMSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSettingViewController.m; sourceTree = "<group>"; };
+		144772F222256DA800A99580 /* EMSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingTableViewCell.h; sourceTree = "<group>"; };
+		144772F322256DA800A99580 /* EMSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSettingTableViewCell.m; sourceTree = "<group>"; };
 		1451A49F21DF14FA00012930 /* EasyM-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EasyM-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1451A4A221DF14FB00012930 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1451A4A321DF14FB00012930 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -237,6 +243,8 @@
 			children = (
 				145634C02222946800E3ECAD /* EMMeHeaderView.h */,
 				145634C12222946800E3ECAD /* EMMeHeaderView.m */,
+				144772F222256DA800A99580 /* EMSettingTableViewCell.h */,
+				144772F322256DA800A99580 /* EMSettingTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +261,8 @@
 			children = (
 				145634BD222293FB00E3ECAD /* EMMeViewController.h */,
 				145634BE222293FB00E3ECAD /* EMMeViewController.m */,
+				144772EF222562F700A99580 /* EMSettingViewController.h */,
+				144772F0222562F700A99580 /* EMSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -463,10 +473,12 @@
 				14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */,
 				14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */,
 				14B94ACE22218111008E0FF8 /* EMDiscoveryCollectionViewCell.m in Sources */,
+				144772F1222562F700A99580 /* EMSettingViewController.m in Sources */,
 				14B94AD122219116008E0FF8 /* EMDiscoveryUpdatingsTableViewCell.m in Sources */,
 				14BC6E0722203EF9006D5326 /* EMHomeMemoCollectionViewCell.m in Sources */,
 				14BC6DF3221EDC4F006D5326 /* EMNavigationController.m in Sources */,
 				1451A4B221DF14FD00012930 /* main.m in Sources */,
+				144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */,
 				1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */,
 				14BC6DFF221EDD46006D5326 /* EMHomeViewController.m in Sources */,
 				145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */,
@@ -631,6 +643,7 @@
 			baseConfigurationReference = D6B7107570AE021FE957E312 /* Pods-EasyM-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
@@ -641,6 +654,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -650,6 +664,7 @@
 			baseConfigurationReference = 1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
@@ -660,6 +675,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -669,6 +685,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				INFOPLIST_FILE = "EasyM-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -687,6 +704,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				INFOPLIST_FILE = "EasyM-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

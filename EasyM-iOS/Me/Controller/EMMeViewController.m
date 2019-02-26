@@ -10,6 +10,7 @@
 #import "EMMeHeaderView.h"
 #import "EMHomeMemoCollectionView.h"
 #import "EMHomeMemoCollectionViewCell.h"
+#import "EMSettingViewController.h"
 
 @interface EMMeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoArr;
@@ -80,6 +81,13 @@
 #pragma mark - ButtonClicked
 - (void)settingClicked {
     NSLog(@"设置————点击");
+    
+    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
+
+    EMSettingViewController *settingVc = [[EMSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVc animated:YES];
+    
+    self.hidesBottomBarWhenPushed = NO; 
 }
 
 - (void)messageClicked {
