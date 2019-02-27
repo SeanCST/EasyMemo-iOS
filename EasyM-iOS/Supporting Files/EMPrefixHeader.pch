@@ -17,6 +17,7 @@
 
 #import "SDAutoLayout.h"
 #import "AFNetworking.h"
+#import "SVProgressHUD.h"
 
 
 // 颜色

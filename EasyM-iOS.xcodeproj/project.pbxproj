@@ -16,6 +16,7 @@
 		1451A4BC21DF14FD00012930 /* EasyM_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4BB21DF14FD00012930 /* EasyM_iOSTests.m */; };
 		145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634BE222293FB00E3ECAD /* EMMeViewController.m */; };
 		145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634C12222946800E3ECAD /* EMMeHeaderView.m */; };
+		149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */; };
 		14B94AC522214C0A008E0FF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B94AC422214C09008E0FF8 /* Assets.xcassets */; };
 		14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */; };
 		14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94ACA22217A04008E0FF8 /* EMDiscoveryCollectionView.m */; };
@@ -60,6 +61,8 @@
 		145634BE222293FB00E3ECAD /* EMMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMeViewController.m; sourceTree = "<group>"; };
 		145634C02222946800E3ECAD /* EMMeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMeHeaderView.h; sourceTree = "<group>"; };
 		145634C12222946800E3ECAD /* EMMeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMeHeaderView.m; sourceTree = "<group>"; };
+		149DEAFE2226AFD600F4B3DE /* EMPointDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMPointDetailViewController.h; sourceTree = "<group>"; };
+		149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMPointDetailViewController.m; sourceTree = "<group>"; };
 		14B94AC422214C09008E0FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14B94AC62221795C008E0FF8 /* EMDiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoveryViewController.h; sourceTree = "<group>"; };
 		14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMDiscoveryViewController.m; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				14BC6DFE221EDD46006D5326 /* EMHomeViewController.m */,
 				14ED138522242A72007E3EFD /* EMMemoPointListViewController.h */,
 				14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */,
+				149DEAFE2226AFD600F4B3DE /* EMPointDetailViewController.h */,
+				149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -435,10 +440,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -472,6 +479,7 @@
 			files = (
 				14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */,
 				14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */,
+				149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */,
 				14B94ACE22218111008E0FF8 /* EMDiscoveryCollectionViewCell.m in Sources */,
 				144772F1222562F700A99580 /* EMSettingViewController.m in Sources */,
 				14B94AD122219116008E0FF8 /* EMDiscoveryUpdatingsTableViewCell.m in Sources */,
@@ -648,10 +656,7 @@
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -669,10 +674,7 @@
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -687,11 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				INFOPLIST_FILE = "EasyM-iOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -706,11 +704,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				INFOPLIST_FILE = "EasyM-iOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

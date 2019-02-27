@@ -7,6 +7,7 @@
 //
 
 #import "EMMemoPointListViewController.h"
+#import "EMPointDetailViewController.h"
 
 @interface EMMemoPointListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoPointArr;
@@ -119,6 +120,15 @@
     return headerView;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
+
+    EMPointDetailViewController *detailVc = [[EMPointDetailViewController alloc] initWithPointArr:self.memoPointArr currentIndex:indexPath.row];
+    [self.navigationController pushViewController:detailVc animated:YES];
+    
+    self.hidesBottomBarWhenPushed = YES;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EMMemoPointListViewCell" forIndexPath:indexPath];
@@ -158,6 +168,10 @@
 - (NSMutableArray *)memoPointArr {
     if (!_memoPointArr) {
         _memoPointArr = [NSMutableArray array];
+        
+        for (int i = 0; i < 5; i++) {
+            [_memoPointArr addObject:[NSString stringWithFormat:@"这是问题啊 —— %d", i + 1]];
+        }
     }
     return _memoPointArr;
 }

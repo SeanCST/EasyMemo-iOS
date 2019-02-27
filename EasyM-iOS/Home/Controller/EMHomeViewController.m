@@ -128,6 +128,7 @@
 - (NSMutableArray *)memoArr {
     if (!_memoArr) {
         _memoArr = [NSMutableArray array];
+        [_memoArr addObject:@"笔记1"];
     }
     return _memoArr;
 }

@@ -46,7 +46,7 @@
     .widthIs(50)
     .heightIs(50);
     
-    // Title - 单行
+    // Title 
     _titleLabel = [UILabel new];
     _titleLabel.font = [UIFont systemFontOfSize:20];
     _titleLabel.numberOfLines = 0;
