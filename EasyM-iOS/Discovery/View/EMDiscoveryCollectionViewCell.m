@@ -20,13 +20,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupUI];
-        self.backgroundColor = kRandomColor;
     }
     return self;
 }
 
 
 - (void)setupUI {
+    self.backgroundColor = UIColorFromRGB(0xFBFFB9);
+
     UILabel *categoryLabel = [UILabel new];
     categoryLabel.numberOfLines = 0;
     categoryLabel.textAlignment = NSTextAlignmentCenter;
@@ -37,7 +38,6 @@
     categoryLabel.top = 0;
     categoryLabel.width = width;
     categoryLabel.height = height;
-    
     self.categoryLabel = categoryLabel;
 }
 

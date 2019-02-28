@@ -40,6 +40,17 @@
         self.window.rootViewController = [[EMLoginViewController alloc] init];
     }
     [self.window makeKeyAndVisible];
+    
+    [self setDefaultConfig];
+}
+
+
+/**
+ 进行一些全局初始化的设置
+ */
+- (void)setDefaultConfig {
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
 }
 
 - (void)dealloc {

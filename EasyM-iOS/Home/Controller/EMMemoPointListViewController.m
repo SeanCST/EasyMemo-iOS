@@ -164,6 +164,18 @@
     [self presentViewController:alertController animated:true completion:nil];
 }
 
+- (void)orderByTimeBtnClicked {
+    
+}
+
+- (void)neglectRememberBtnClicked {
+    
+}
+
+- (void)mostForgotBtnClicked {
+    
+}
+
 #pragma 懒加载
 - (NSMutableArray *)memoPointArr {
     if (!_memoPointArr) {

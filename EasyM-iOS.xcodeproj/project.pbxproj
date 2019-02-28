@@ -17,7 +17,6 @@
 		145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634BE222293FB00E3ECAD /* EMMeViewController.m */; };
 		145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634C12222946800E3ECAD /* EMMeHeaderView.m */; };
 		149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */; };
-		14B94AC522214C0A008E0FF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B94AC422214C09008E0FF8 /* Assets.xcassets */; };
 		14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */; };
 		14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94ACA22217A04008E0FF8 /* EMDiscoveryCollectionView.m */; };
 		14B94ACE22218111008E0FF8 /* EMDiscoveryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94ACD22218111008E0FF8 /* EMDiscoveryCollectionViewCell.m */; };
@@ -28,6 +27,7 @@
 		14BC6DFF221EDD46006D5326 /* EMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6DFE221EDD46006D5326 /* EMHomeViewController.m */; };
 		14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E03222024C8006D5326 /* EMHomeMemoCollectionView.m */; };
 		14BC6E0722203EF9006D5326 /* EMHomeMemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */; };
+		14E4A0CA2228209400C4813D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E4A0C92228209400C4813D /* Assets.xcassets */; };
 		14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */; };
 		5880BD6C956FB0588AE8C962 /* libPods-EasyM-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */; };
 /* End PBXBuildFile section */
@@ -63,7 +63,6 @@
 		145634C12222946800E3ECAD /* EMMeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMeHeaderView.m; sourceTree = "<group>"; };
 		149DEAFE2226AFD600F4B3DE /* EMPointDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMPointDetailViewController.h; sourceTree = "<group>"; };
 		149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMPointDetailViewController.m; sourceTree = "<group>"; };
-		14B94AC422214C09008E0FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14B94AC62221795C008E0FF8 /* EMDiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoveryViewController.h; sourceTree = "<group>"; };
 		14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMDiscoveryViewController.m; sourceTree = "<group>"; };
 		14B94AC922217A04008E0FF8 /* EMDiscoveryCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoveryCollectionView.h; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		14BC6E03222024C8006D5326 /* EMHomeMemoCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHomeMemoCollectionView.m; sourceTree = "<group>"; };
 		14BC6E0522203EF9006D5326 /* EMHomeMemoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMHomeMemoCollectionViewCell.h; sourceTree = "<group>"; };
 		14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHomeMemoCollectionViewCell.m; sourceTree = "<group>"; };
+		14E4A0C92228209400C4813D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14ED138522242A72007E3EFD /* EMMemoPointListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMemoPointListViewController.h; sourceTree = "<group>"; };
 		14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMemoPointListViewController.m; sourceTree = "<group>"; };
 		1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyM-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -307,8 +307,8 @@
 				14BC6DEA221EC9E4006D5326 /* EMPrefixHeader.pch */,
 				1451A4A821DF14FB00012930 /* Main.storyboard */,
 				1451A4B121DF14FD00012930 /* main.m */,
+				14E4A0C92228209400C4813D /* Assets.xcassets */,
 				1451A4AD21DF14FD00012930 /* LaunchScreen.storyboard */,
-				14B94AC422214C09008E0FF8 /* Assets.xcassets */,
 				1451A4B021DF14FD00012930 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -417,7 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1451A4AF21DF14FD00012930 /* LaunchScreen.storyboard in Resources */,
-				14B94AC522214C0A008E0FF8 /* Assets.xcassets in Resources */,
+				14E4A0CA2228209400C4813D /* Assets.xcassets in Resources */,
 				1451A4AA21DF14FB00012930 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,7 +656,10 @@
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -674,7 +677,10 @@
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -689,7 +695,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				INFOPLIST_FILE = "EasyM-iOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,7 +714,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
 				INFOPLIST_FILE = "EasyM-iOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "SeanCST.EasyM-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

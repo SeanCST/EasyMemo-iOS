@@ -6,4 +6,5 @@ target 'EasyM-iOS' do
     pod 'MJRefresh'
     pod 'SDAutoLayout', '~> 2.1.3'
     pod 'SDWebImage'
+    pod 'SVProgressHUD'
 end
