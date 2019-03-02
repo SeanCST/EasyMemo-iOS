@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIView *memoView;
+
+@property (nonatomic, strong) UIButton *likeBtn;
 @end
 
 @implementation EMDiscoveryUpdatingsTableViewCell
@@ -125,16 +127,18 @@
     [self.contentView addSubview:likeBtn];
     [likeBtn setTitle:@"赞" forState:UIControlStateNormal];
     [likeBtn setImage:[UIImage imageNamed:@"btn_like"] forState:UIControlStateNormal];
-    [likeBtn setImage:[UIImage imageNamed:@"btn_like_fill"] forState:UIControlStateHighlighted];
+    [likeBtn setImage:[UIImage imageNamed:@"btn_like_fill"] forState:UIControlStateSelected];
     [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [likeBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-    [likeBtn setTitleColor:UIColorFromRGB(0xd81e06) forState:UIControlStateHighlighted];
+    [likeBtn setTitleColor:UIColorFromRGB(0xd81e06) forState:UIControlStateSelected];
     [likeBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
     likeBtn.sd_layout
     .widthRatioToView(retweetBtn, 1)
     .heightRatioToView(retweetBtn, 1)
     .bottomEqualToView(retweetBtn)
     .rightSpaceToView(self.contentView, 0);
+    [likeBtn addTarget:self action:@selector(likeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.likeBtn = likeBtn;
     
     [self setupAutoHeightWithBottomView:retweetBtn bottomMargin:5];
 }
@@ -171,6 +175,10 @@
     [memoNameLabel setText:@"《软件体系结构笔记》"];
     
     return memoView;
+}
+
+- (void)likeBtnClicked {
+    self.likeBtn.selected = !self.likeBtn.selected;
 }
 
 @end

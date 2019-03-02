@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143D2339222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */; };
 		144772F1222562F700A99580 /* EMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F0222562F700A99580 /* EMSettingViewController.m */; };
 		144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F322256DA800A99580 /* EMSettingTableViewCell.m */; };
 		1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4A321DF14FB00012930 /* AppDelegate.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		143D2337222AB5E10017A0F8 /* EMMemoListHeaderScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMemoListHeaderScrollView.h; sourceTree = "<group>"; };
+		143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMemoListHeaderScrollView.m; sourceTree = "<group>"; };
 		144772EF222562F700A99580 /* EMSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingViewController.h; sourceTree = "<group>"; };
 		144772F0222562F700A99580 /* EMSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSettingViewController.m; sourceTree = "<group>"; };
 		144772F222256DA800A99580 /* EMSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingTableViewCell.h; sourceTree = "<group>"; };
@@ -239,6 +242,8 @@
 				14BC6E03222024C8006D5326 /* EMHomeMemoCollectionView.m */,
 				14BC6E0522203EF9006D5326 /* EMHomeMemoCollectionViewCell.h */,
 				14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */,
+				143D2337222AB5E10017A0F8 /* EMMemoListHeaderScrollView.h */,
+				143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143D2339222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m in Sources */,
 				14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */,
 				14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */,
 				149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */,

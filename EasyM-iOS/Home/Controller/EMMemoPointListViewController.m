@@ -8,6 +8,7 @@
 
 #import "EMMemoPointListViewController.h"
 #import "EMPointDetailViewController.h"
+#import "EMmemoListHeaderScrollView.h"
 
 @interface EMMemoPointListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoPointArr;
@@ -76,46 +77,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    return 44;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
-    headerView.backgroundColor = EMBackgroundColor;
-    
-    UIButton *orderByTimeBtn = [UIButton new];
-    [headerView addSubview:orderByTimeBtn];
-    [orderByTimeBtn setTitle:@"按时间排序" forState:UIControlStateNormal];
-    [orderByTimeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    orderByTimeBtn.sd_layout
-    .leftSpaceToView(headerView, 20)
-    .widthIs(100)
-    .heightIs(30)
-    .centerYEqualToView(headerView);
-    [orderByTimeBtn addTarget:self action:@selector(orderByTimeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *neglectRememberBtn = [UIButton new];
-    [headerView addSubview:neglectRememberBtn];
-    [neglectRememberBtn setTitle:@"忽略记得" forState:UIControlStateNormal];
-    [neglectRememberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    neglectRememberBtn.sd_layout
-    .widthIs(100)
-    .heightIs(30)
-    .centerYEqualToView(headerView)
-    .centerXEqualToView(headerView);
-    [orderByTimeBtn addTarget:self action:@selector(neglectRememberBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIButton *mostForgotBtn = [UIButton new];
-    [headerView addSubview:mostForgotBtn];
-    [mostForgotBtn setTitle:@"最易忘记" forState:UIControlStateNormal];
-    [mostForgotBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    mostForgotBtn.sd_layout
-    .rightSpaceToView(headerView, 20)
-    .widthIs(100)
-    .heightIs(30)
-    .centerYEqualToView(headerView);
-    [mostForgotBtn addTarget:self action:@selector(mostForgotBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIView *headerView = [[EMMemoListHeaderScrollView alloc] initWithTitles:@[@"按时间排序", @"忽略记得", @"最易忘记"] size:CGSizeMake(kScreenWidth, 44)];
+    headerView.frame = CGRectMake(0, 0, kScreenWidth, 44);
     
     return headerView;
 }

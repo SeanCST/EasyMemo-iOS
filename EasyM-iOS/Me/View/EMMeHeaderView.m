@@ -22,7 +22,7 @@
 - (void)setupUI {
     // 1. 头像
     UIImageView *avatarImageView = [UIImageView new];
-    [avatarImageView setImage:[UIImage imageNamed:@"icon_memo_add"]];
+    [avatarImageView setImage:[UIImage imageNamed:@"icon_avatar_default"]];
     [self addSubview:avatarImageView];
     avatarImageView.sd_layout
     .topSpaceToView(self, 10)
@@ -32,10 +32,10 @@
     
     // 2. 昵称
     UILabel *nicknameLabel = [UILabel new];
-    nicknameLabel.font = [UIFont systemFontOfSize:20];
+    nicknameLabel.font = [UIFont systemFontOfSize:16];
     [self addSubview:nicknameLabel];
     nicknameLabel.sd_layout
-    .heightIs(22)
+    .heightIs(17)
     .topSpaceToView(self, 15)
     .leftSpaceToView(avatarImageView, 20);
     [nicknameLabel setSingleLineAutoResizeWithMaxWidth:(kScreenWidth - 50 - 30)];
@@ -43,50 +43,63 @@
     
     // 3. 简介
     UILabel *briefIntroLabel = [UILabel new];
-    briefIntroLabel.font = [UIFont systemFontOfSize:14];
+    briefIntroLabel.font = [UIFont systemFontOfSize:12];
+    briefIntroLabel.textColor = [UIColor grayColor];
     [self addSubview:briefIntroLabel];
-    briefIntroLabel.numberOfLines = 0;
+//    briefIntroLabel.numberOfLines = 0;
     briefIntroLabel.sd_layout
     .topSpaceToView(nicknameLabel, 10)
     .leftEqualToView(nicknameLabel)
-    .autoHeightRatio(0);
+    .heightIs(13);
+//    .autoHeightRatio(0);
     // 设置最大宽度
-    [briefIntroLabel setSingleLineAutoResizeWithMaxWidth:(kScreenWidth - 50 - 30)];
+    [briefIntroLabel setSingleLineAutoResizeWithMaxWidth:(kScreenWidth - 50 - 40)];
     // 设置最大行数
-    [briefIntroLabel setMaxNumberOfLinesToShow:2];
-    [briefIntroLabel setText:@"你就当我是学霸吧哈哈哈或哈哈哈哈或哈哈哈哈或哈哈哈😁啊啊"];
+//    [briefIntroLabel setMaxNumberOfLinesToShow:2];
+    [briefIntroLabel setText:@"简介：你就当我是学霸吧哈哈哈或哈哈哈哈或哈哈哈哈或哈哈哈😁啊啊"];
     
-    // 4. 分割线
+    // 4. 分割小段
     UIView *bottomSeperateLine = [UIView new];
     [self addSubview:bottomSeperateLine];
-    bottomSeperateLine.backgroundColor = [UIColor grayColor];
+    bottomSeperateLine.backgroundColor = UIColorFromRGB(0xefefef);
     bottomSeperateLine.sd_layout
     .widthIs(kScreenWidth)
-    .heightIs(0.5)
+    .heightIs(10)
     .leftEqualToView(self)
     .bottomEqualToView(self);
     
     // 5. 关注/粉丝按钮
     UIButton *followBtn = [UIButton new];
     [self addSubview:followBtn];
-    [followBtn setTitle:@"113 关注" forState:UIControlStateNormal];
-    [followBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [followBtn setTitle:@"113 我关注的人" forState:UIControlStateNormal];
+    [followBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [followBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     followBtn.sd_layout
-    .bottomEqualToView(self)
-    .widthIs(100)
+    .bottomSpaceToView(bottomSeperateLine, 5)
+    .widthIs(kScreenWidth / 2)
     .heightIs(30)
     .centerXIs(kScreenWidth / 4);
     
     UIButton *fansBtn = [UIButton new];
     [self addSubview:fansBtn];
-    [fansBtn setTitle:@"1777 粉丝" forState:UIControlStateNormal];
-    [fansBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [fansBtn setTitle:@"1777 关注我的人" forState:UIControlStateNormal];
+    [fansBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [fansBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     fansBtn.sd_layout
     .topEqualToView(followBtn)
     .widthRatioToView(followBtn, 1)
     .heightRatioToView(followBtn, 1)
     .centerXIs(kScreenWidth / 4 * 3);
     
+    // 6. 关注、粉丝之间的分割竖线
+    UIView *seperateLine = [UIView new];
+    [self addSubview:seperateLine];
+    seperateLine.backgroundColor = [UIColor grayColor];
+    seperateLine.sd_layout
+    .widthIs(1)
+    .heightIs(10)
+    .centerYEqualToView(followBtn)
+    .centerXIs(kScreenWidth / 2);
     
 }
 
