@@ -7,14 +7,14 @@
 //
 
 #import "EMDiscoveryViewController.h"
-#import "EMDiscoveryCollectionView.h"
-#import "EMDiscoveryCollectionViewCell.h"
+//#import "EMDiscoveryCollectionView.h"
+//#import "EMDiscoveryCollectionViewCell.h"
 #import "EMDiscoveryUpdatingsTableViewCell.h"
 
-@interface EMDiscoveryViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate>
+@interface EMDiscoveryViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *categoryArr;
-@property (nonatomic, strong) EMDiscoveryCollectionView *collectionView;
+//@property (nonatomic, strong) NSMutableArray *categoryArr;
+//@property (nonatomic, strong) EMDiscoveryCollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -47,33 +47,33 @@
     .topSpaceToView(self.view, 10 + NAVIGATION_BAR_HEIGHT)
     .heightIs(32);
     
-    // 2. 分类列表
-    // 设置 flowLayout
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumInteritemSpacing = 10;
-    flowLayout.minimumLineSpacing = 10;
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    flowLayout.itemSize = CGSizeMake(80, 50);
-    EMDiscoveryCollectionView *collectionView = [[EMDiscoveryCollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
-    [self.view addSubview:collectionView];
-    collectionView.backgroundColor = [UIColor whiteColor];
-    collectionView.sd_layout
-    .topSpaceToView(searchBar, 10)
-    .leftSpaceToView(self.view, 10)
-    .rightSpaceToView(self.view, 10)
-    .heightIs(140);
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
+//    // 2. 分类列表
+//    // 设置 flowLayout
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    flowLayout.minimumInteritemSpacing = 10;
+//    flowLayout.minimumLineSpacing = 10;
+//    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+//    flowLayout.itemSize = CGSizeMake(80, 50);
+//    EMDiscoveryCollectionView *collectionView = [[EMDiscoveryCollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
+//    [self.view addSubview:collectionView];
 //    collectionView.backgroundColor = [UIColor whiteColor];
-    [collectionView registerClass:[EMDiscoveryCollectionViewCell class] forCellWithReuseIdentifier:kDiscoveryCollectionViewCell];
-    self.collectionView = collectionView;
-    
+//    collectionView.sd_layout
+//    .topSpaceToView(searchBar, 10)
+//    .leftSpaceToView(self.view, 10)
+//    .rightSpaceToView(self.view, 10)
+//    .heightIs(140);
+//    collectionView.delegate = self;
+//    collectionView.dataSource = self;
+////    collectionView.backgroundColor = [UIColor whiteColor];
+//    [collectionView registerClass:[EMDiscoveryCollectionViewCell class] forCellWithReuseIdentifier:kDiscoveryCollectionViewCell];
+//    self.collectionView = collectionView;
+//
     // 3. 动态列表
     UITableView *discoveryUpdatingsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) style:UITableViewStylePlain];
     [self.view addSubview:discoveryUpdatingsTableView];
     discoveryUpdatingsTableView.estimatedRowHeight = 80.0f;
     discoveryUpdatingsTableView.sd_layout
-    .topSpaceToView(collectionView, 0)
+    .topSpaceToView(searchBar, 10)
     .leftSpaceToView(self.view, 0)
     .rightSpaceToView(self.view, 0)
     .bottomSpaceToView(self.view, TAB_BAR_HEIGHT);
@@ -86,16 +86,16 @@
 
 
 
-#pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.categoryArr.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    EMDiscoveryCollectionViewCell *cell = (EMDiscoveryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDiscoveryCollectionViewCell forIndexPath:indexPath];
-    cell.categoryName = self.categoryArr[indexPath.row];
-    return cell;
-}
+//#pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    return self.categoryArr.count;
+//}
+//
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    EMDiscoveryCollectionViewCell *cell = (EMDiscoveryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDiscoveryCollectionViewCell forIndexPath:indexPath];
+//    cell.categoryName = self.categoryArr[indexPath.row];
+//    return cell;
+//}
 
 #pragma mark - UITableViewDataSource & UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -121,13 +121,13 @@
     return cell;
 }
 
-#pragma mark - 懒加载
-- (NSMutableArray *)categoryArr {
-    if (!_categoryArr) {
-        _categoryArr = [NSMutableArray arrayWithObjects:@"计算机科学", @"法律", @"金融", @"医学", @"经管", @"其他", nil];
-    }
-    return _categoryArr;
-}
+//#pragma mark - 懒加载
+//- (NSMutableArray *)categoryArr {
+//    if (!_categoryArr) {
+//        _categoryArr = [NSMutableArray arrayWithObjects:@"计算机科学", @"法律", @"金融", @"医学", @"经管", @"其他", nil];
+//    }
+//    return _categoryArr;
+//}
 /*
 #pragma mark - Navigation
 

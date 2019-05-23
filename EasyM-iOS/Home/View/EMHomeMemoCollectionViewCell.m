@@ -20,7 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupUI];
-        self.backgroundColor = UIColorFromRGB(0x80d4f6);
+        self.backgroundColor = EMBackgroundColor;
     }
     return self;
 }

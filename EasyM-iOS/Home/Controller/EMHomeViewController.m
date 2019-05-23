@@ -32,20 +32,20 @@
 
 #pragma mark - setupUI
 - (void)setupUI {
-    // 1. 顶部搜索栏
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
-    searchBar.placeholder = @"搜索您的笔记";
-    searchBar.delegate = self;
-    UITextField *searchField = [searchBar valueForKey:@"searchField"];
-    [searchField setBackgroundColor: UIColorFromRGB(0xF8F8F8)];
-    [searchField setValue:[UIFont systemFontOfSize:14.0] forKeyPath:@"_placeholderLabel.font"];
-    [[[[searchBar.subviews objectAtIndex:0] subviews] objectAtIndex:0] removeFromSuperview];
-    [self.view addSubview:searchBar];
-    searchBar.sd_layout
-    .leftSpaceToView(self.view, 10)
-    .rightSpaceToView(self.view, 10)
-    .topSpaceToView(self.view, 10 + NAVIGATION_BAR_HEIGHT)
-    .heightIs(32);
+//    // 1. 顶部搜索栏
+//    UISearchBar *searchBar = [[UISearchBar alloc] init];
+//    searchBar.placeholder = @"搜索您的笔记";
+//    searchBar.delegate = self;
+//    UITextField *searchField = [searchBar valueForKey:@"searchField"];
+//    [searchField setBackgroundColor: UIColorFromRGB(0xF8F8F8)];
+//    [searchField setValue:[UIFont systemFontOfSize:14.0] forKeyPath:@"_placeholderLabel.font"];
+//    [[[[searchBar.subviews objectAtIndex:0] subviews] objectAtIndex:0] removeFromSuperview];
+//    [self.view addSubview:searchBar];
+//    searchBar.sd_layout
+//    .leftSpaceToView(self.view, 10)
+//    .rightSpaceToView(self.view, 10)
+//    .topSpaceToView(self.view, 10 + NAVIGATION_BAR_HEIGHT)
+//    .heightIs(32);
     
     // 2. 添加笔记按钮
     UIButton *addMemoButton = [UIButton new];
@@ -70,7 +70,8 @@
     EMHomeMemoCollectionView *collectionView = [[EMHomeMemoCollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
     [self.view addSubview:collectionView];
     collectionView.sd_layout
-    .topSpaceToView(searchBar, 10)
+//    .topSpaceToView(searchBar, 10)
+    .topSpaceToView(self.view, 10 + NAVIGATION_BAR_HEIGHT)
     .leftSpaceToView(self.view, 10)
     .rightSpaceToView(self.view, 10)
     .bottomSpaceToView(addMemoButton, 10);
