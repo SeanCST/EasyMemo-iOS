@@ -8,6 +8,7 @@
 
 #import "EMLoginViewController.h"
 #import "EMRegisterViewController.h"
+#import "EMUserInfo.h"
 
 @interface EMLoginViewController ()
 @property (nonatomic, strong) UITextField *phoneField;
@@ -124,13 +125,18 @@
                              @"password": self.passwordField.text
                              };
     
+    [SVProgressHUD showWithStatus:@"登录中"];
+    
     [[EMSessionManager shareInstance] postRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
-
         if ([@"200" isEqualToString:responseObject[@"response"]]) {
             [SVProgressHUD showSuccessWithStatus:@"登陆成功"];
             // 存储已登录的状态
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setBool:YES forKey:@"LoginedAccount"];
+            
+            // 用户信息由字典转为模型并本地化
+            EMUserModel *userModel = [EMUserInfo userModelWithDict:responseObject];
+            [EMUserInfo saveLocalUser:userModel];
             
             // 发送通知跳转控制器
             [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginSuccessChangeVC" object:nil];

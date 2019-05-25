@@ -19,6 +19,7 @@
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
 #import "EMSessionManager.h"
+#import "YYModel.h"
 
 
 // 颜色

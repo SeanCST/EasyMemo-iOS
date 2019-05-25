@@ -7,6 +7,7 @@
 //
 
 #import "EMRegisterViewController.h"
+#import "EMUserInfo.h"
 
 @interface EMRegisterViewController ()
 @property (nonatomic, strong) UITextField *phoneField;
@@ -144,11 +145,28 @@
  获取验证码
  */
 - (void)verifyCodeBtnClicked {
-    self.verifyCodeBtn.enabled = NO;
-    self.verifyCodeBtn.selected = YES;
-    self.countDownTimer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(timeCountDown) userInfo:nil repeats:YES];
-    self.countDownSeconds = 10;
-    [[NSRunLoop currentRunLoop] addTimer:self.countDownTimer forMode:NSRunLoopCommonModes];
+    NSString *URLString = @"/easyM/sendCode";
+    NSDictionary *params = @{
+                             @"phoneNumber": self.phoneField.text,
+                             };
+    
+    [[EMSessionManager shareInstance] postRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+        if ([@"200" isEqualToString:responseObject[@"response"]]) {
+            
+            self.verifyCodeBtn.enabled = NO;
+            self.verifyCodeBtn.selected = YES;
+            self.countDownTimer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(timeCountDown) userInfo:nil repeats:YES];
+            self.countDownSeconds = 60;
+            [[NSRunLoop currentRunLoop] addTimer:self.countDownTimer forMode:NSRunLoopCommonModes];
+            
+        } else {
+            [SVProgressHUD showInfoWithStatus:responseObject[@"response"]];
+        }
+        
+    } fail:^(NSError * _Nullable error) {
+        [SVProgressHUD showErrorWithStatus:@"失败"];
+    }];
+    
 }
 
 /**
@@ -171,24 +189,41 @@
  无账号、前往注册
  */
 - (void)rigisterBtnClicked {
-    //    NSString *URLString = [NSString stringWithFormat:@"%@/login/cellphone", BaseUrl];
-    //    NSDictionary *params = @{@"phone": self.phoneField.text,
-    //                             @"password": self.passwordField.text
-    //                             };
+
+    NSString *URLString = @"/easyM/register";
+    NSDictionary *params = @{
+                             @"phoneNumber": self.phoneField.text,
+                             @"password": self.passwordField.text,
+                             @"verificationCode" : self.verifyCodeField.text
+                             };
     
-    //    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //    [manager GET:URLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) { // 登陆成功
+    [SVProgressHUD showWithStatus:@"注册中"];
     
-    // 存储已登录的状态
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:YES forKey:@"LoginedAccount"];
+    [[EMSessionManager shareInstance] postRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+        // 注册成功，已不需要倒计时按钮，关闭定时器
+        [self.countDownTimer invalidate];
+        self.countDownTimer = nil;
+        
+        if ([@"200" isEqualToString:responseObject[@"response"]]) {
+            [SVProgressHUD showSuccessWithStatus:@"注册成功并登陆"];
+            // 存储已登录的状态
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setBool:YES forKey:@"LoginedAccount"];
+            
+            // 用户信息由字典转为模型并本地化
+            EMUserModel *userModel = [EMUserInfo userModelWithDict:responseObject];
+            [EMUserInfo saveLocalUser:userModel];
+            
+            // 发送通知跳转控制器
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginSuccessChangeVC" object:nil];
+        } else {
+            [SVProgressHUD showInfoWithStatus:responseObject[@"response"]];
+        }
+        
+    } fail:^(NSError * _Nullable error) {
+        [SVProgressHUD showErrorWithStatus:@"登陆失败"];
+    }];
     
-    // 发送通知跳转控制器
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginSuccessChangeVC" object:nil];
-    
-    //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    //
-    //    }];
 }
 
 

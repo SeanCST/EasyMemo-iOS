@@ -50,7 +50,7 @@
  */
 - (void)setDefaultConfig {
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-
+    [SVProgressHUD setMinimumDismissTimeInterval:2.0f];
 }
 
 - (void)dealloc {
