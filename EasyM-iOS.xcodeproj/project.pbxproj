@@ -34,6 +34,7 @@
 		14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */; };
 		14F462FC22990FF100DF1CEE /* EMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F462FB22990FF100DF1CEE /* EMUserModel.m */; };
 		14F46300229912E800DF1CEE /* EMUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F462FF229912E800DF1CEE /* EMUserInfo.m */; };
+		14F46303229928B300DF1CEE /* EMProjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F46302229928B300DF1CEE /* EMProjectModel.m */; };
 		14F5F2DE2297D629000A8FB6 /* EMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F5F2DD2297D629000A8FB6 /* EMBaseModel.m */; };
 		14F5F2E12297D776000A8FB6 /* EMSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F5F2E02297D776000A8FB6 /* EMSessionManager.m */; };
 		5880BD6C956FB0588AE8C962 /* libPods-EasyM-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */; };
@@ -104,6 +105,8 @@
 		14F462FB22990FF100DF1CEE /* EMUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMUserModel.m; sourceTree = "<group>"; };
 		14F462FE229912E800DF1CEE /* EMUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMUserInfo.h; sourceTree = "<group>"; };
 		14F462FF229912E800DF1CEE /* EMUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMUserInfo.m; sourceTree = "<group>"; };
+		14F46301229928B300DF1CEE /* EMProjectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMProjectModel.h; sourceTree = "<group>"; };
+		14F46302229928B300DF1CEE /* EMProjectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMProjectModel.m; sourceTree = "<group>"; };
 		14F5F2DC2297D629000A8FB6 /* EMBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMBaseModel.h; sourceTree = "<group>"; };
 		14F5F2DD2297D629000A8FB6 /* EMBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMBaseModel.m; sourceTree = "<group>"; };
 		14F5F2DF2297D776000A8FB6 /* EMSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSessionManager.h; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 		14BC6DF5221EDD07006D5326 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				14F46301229928B300DF1CEE /* EMProjectModel.h */,
+				14F46302229928B300DF1CEE /* EMProjectModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */,
 				14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */,
 				14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */,
+				14F46303229928B300DF1CEE /* EMProjectModel.m in Sources */,
 				14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */,
 				14BC6DF0221EDB95006D5326 /* EMTabBarController.m in Sources */,
 			);

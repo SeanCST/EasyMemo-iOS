@@ -7,6 +7,7 @@
 //
 
 #import "EMPointDetailViewController.h"
+#import "EMProjectModel.h"
 
 @interface EMPointDetailViewController ()
 @property (nonatomic, assign) NSUInteger currentIndex;
@@ -16,7 +17,7 @@
 @property (nonatomic, strong) UILabel *answerLabel;
 @property (nonatomic, strong) UIButton *rememberBtn;
 @property (nonatomic, strong) UIButton *forgetBtn;
-@property (nonatomic, strong) UIButton *nextBtn;
+@property (nonatomic, strong) UIButton *showAnswerBtn;
 
 @end
 
@@ -52,9 +53,10 @@
     .autoHeightRatio(0);
     [questionLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     self.questionLabel = questionLabel;
-    NSString *questionText = self.pointArr[self.currentIndex];
-    self.questionLabel.text = [NSString stringWithFormat:@"问题：\n\n%@", questionText];
+    EMKnowPointModel *model = self.pointArr[self.currentIndex];
+    self.questionLabel.text = [NSString stringWithFormat:@"问题：\n\n%@", model.question];
 
+    
     // 答案
     UILabel *answerLabel = [UILabel new];
     answerLabel.font = [UIFont systemFontOfSize:16];
@@ -68,17 +70,20 @@
     .autoHeightRatio(0);
     [answerLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     self.answerLabel = answerLabel;
-    answerLabel.hidden = YES;
+    self.answerLabel.text = [NSString stringWithFormat:@"答案：\n\n%@", model.answer];
 
     // 记得按钮
     UIButton *rememberBtn = [UIButton new];
     [self.view addSubview:rememberBtn];
     [rememberBtn setTitle:@"记得" forState:UIControlStateNormal];
-    [rememberBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [rememberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rememberBtn addTarget:self action:@selector(rememberBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [rememberBtn setBackgroundColor:EMBackgroundColor];
+    rememberBtn.layer.cornerRadius = 5.0f;
+    rememberBtn.clipsToBounds = YES;
     rememberBtn.sd_layout
-    .widthIs(50)
-    .heightIs(30)
+    .widthIs(100)
+    .heightIs(44)
     .centerXIs(kScreenWidth / 4)
     .bottomSpaceToView(self.view, 80);
     self.rememberBtn = rememberBtn;
@@ -87,65 +92,66 @@
     UIButton *forgetBtn = [UIButton new];
     [self.view addSubview:forgetBtn];
     [forgetBtn setTitle:@"忘记" forState:UIControlStateNormal];
-    [forgetBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [forgetBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [forgetBtn addTarget:self action:@selector(forgetBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [forgetBtn setBackgroundColor:EMRGBColor(237, 80, 79)];
+    forgetBtn.layer.cornerRadius = 5.0f;
+    forgetBtn.clipsToBounds = YES;
     forgetBtn.sd_layout
-    .widthIs(50)
-    .heightIs(30)
+    .widthIs(100)
+    .heightIs(44)
     .centerXIs(kScreenWidth / 4 * 3)
     .bottomEqualToView(rememberBtn);
     self.forgetBtn = forgetBtn;
     
-    // 下一个按钮
-    UIButton *nextBtn = [UIButton new];
-    [self.view addSubview:nextBtn];
-    [nextBtn setTitle:@"下一个" forState:UIControlStateNormal];
-    [nextBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [nextBtn addTarget:self action:@selector(nextBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    nextBtn.sd_layout
-    .widthIs(80)
-    .heightIs(30)
-    .centerXIs(kScreenWidth / 2)
-    .bottomEqualToView(rememberBtn);
-    self.nextBtn = nextBtn;
-    nextBtn.hidden = YES;
+    // 显示答案按钮
+    UIButton *showAnswerBtn = [UIButton new];
+    [self.view addSubview:showAnswerBtn];
+    [showAnswerBtn setTitle:@"点击屏幕显示答案" forState:UIControlStateNormal];
+    [showAnswerBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [showAnswerBtn addTarget:self action:@selector(showAnswerBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [showAnswerBtn setBackgroundColor:[UIColor whiteColor]];
+    showAnswerBtn.sd_layout
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .topSpaceToView(questionLabel, 0)
+    .bottomEqualToView(self.view);
+    self.showAnswerBtn = showAnswerBtn;
 }
 
 
 #pragma mark - 按钮点击
 - (void)rememberBtnClicked {
-    // 记得 点击之后显示答案，显示“下一个”按钮，并隐藏记得和忘记按钮
-    self.rememberBtn.hidden = YES;
-    self.forgetBtn.hidden = YES;
-    self.nextBtn.hidden = NO;
-    
-    self.answerLabel.hidden = NO;
-    self.answerLabel.text = [NSString stringWithFormat:@"答案：\n\n这是答案啊 —— %lu", self.currentIndex + 1];
+
+
+    if (self.currentIndex == self.pointArr.count - 1) {
+        [SVProgressHUD showInfoWithStatus:@"已经到最后一个问题了"];
+        return;
+    } else {
+        EMKnowPointModel *model = self.pointArr[++self.currentIndex];
+        self.questionLabel.text = [NSString stringWithFormat:@"问题：\n\n%@", model.question];
+        self.answerLabel.text = [NSString stringWithFormat:@"答案：\n\n%@", model.answer];
+    }
+    self.showAnswerBtn.hidden = NO;
+
 }
 
 - (void)forgetBtnClicked {
-    // 忘记 点击之后显示答案，显示“下一个”按钮，并隐藏记得和忘记按钮
-    self.rememberBtn.hidden = YES;
-    self.forgetBtn.hidden = YES;
-    self.nextBtn.hidden = NO;
-    
-    self.answerLabel.hidden = NO;
-    self.answerLabel.text = [NSString stringWithFormat:@"答案：\n\n这是答案啊 —— %lu", self.currentIndex + 1];
-}
-
-- (void)nextBtnClicked {
-    // 下一个 点击之后切换到下一个问题，隐藏“下一个”按钮，显示“记得”和“忘记”按钮
-    self.nextBtn.hidden = YES;
-    self.rememberBtn.hidden = NO;
-    self.forgetBtn.hidden = NO;
     
     if (self.currentIndex == self.pointArr.count - 1) {
-        [SVProgressHUD showErrorWithStatus:@"已经到最后一个问题了"];
+        [SVProgressHUD showInfoWithStatus:@"已经到最后一个问题了"];
+        return;
     } else {
-        NSString *questionText = self.pointArr[++self.currentIndex];
-        self.questionLabel.text = [NSString stringWithFormat:@"问题：\n\n%@", questionText];
-        self.answerLabel.hidden = YES;
+        EMKnowPointModel *model = self.pointArr[++self.currentIndex];
+        self.questionLabel.text = [NSString stringWithFormat:@"问题：\n\n%@", model.question];
+        self.answerLabel.text = [NSString stringWithFormat:@"答案：\n\n%@", model.answer];
     }
+    
+    self.showAnswerBtn.hidden = NO;
+}
+
+- (void)showAnswerBtnClicked {
+    self.showAnswerBtn.hidden = YES;
 }
 
 /*

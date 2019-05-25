@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EMProjectModel.h"
 
 //static NSString *kHomeMemoCollectionViewCell = @"EMHomeMemoCollectionViewCell";
 
 @interface EMHomeMemoCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, copy) NSString *memoName;
+//@property (nonatomic, copy) NSString *memoName;
 
+- (void)setProjectModel:(EMProjectModel *)model;
 
 @end

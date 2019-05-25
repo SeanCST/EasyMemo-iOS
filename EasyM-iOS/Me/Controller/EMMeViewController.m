@@ -11,6 +11,7 @@
 #import "EMHomeMemoCollectionView.h"
 #import "EMHomeMemoCollectionViewCell.h"
 #import "EMSettingViewController.h"
+#import "EMProjectModel.h"
 
 @interface EMMeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoArr;
@@ -74,7 +75,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     EMHomeMemoCollectionViewCell *cell = (EMHomeMemoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([EMHomeMemoCollectionViewCell class]) forIndexPath:indexPath];
-    cell.memoName = self.memoArr[indexPath.row];
+//    cell.memoName = self.memoArr[indexPath.row];
     return cell;
 }
 

@@ -8,7 +8,6 @@
 
 #import "EMLoginViewController.h"
 #import "EMRegisterViewController.h"
-#import "EMUserInfo.h"
 
 @interface EMLoginViewController ()
 @property (nonatomic, strong) UITextField *phoneField;

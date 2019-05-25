@@ -9,19 +9,22 @@
 #import "EMMemoPointListViewController.h"
 #import "EMPointDetailViewController.h"
 #import "EMmemoListHeaderScrollView.h"
+#import "EMProjectModel.h"
 
 @interface EMMemoPointListViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoPointArr;
 @property (nonatomic, copy) NSString *memoName;
+@property (nonatomic, copy) NSString *memoId;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation EMMemoPointListViewController
 
-- (instancetype)initWithMemoName:(NSString *)memoName {
+- (instancetype)initWithMemoName:(NSString *)memoName memoId:(NSString *)memoId {
     if (self = [super init]) {
         self.memoName = memoName;
+        self.memoId = memoId;
     }
     return self;
 }
@@ -32,6 +35,7 @@
     self.title = self.memoName;
     
     [self setupUI];
+    [self requestData];
 }
 
 - (void)setupUI {
@@ -62,6 +66,37 @@
 //    [memoPointTableView registerClass:[UITableView class] forCellReuseIdentifier:@"EMMemoPointListViewCell"];
     self.tableView = memoPointTableView;
 }
+
+#pragma mark - Data
+- (void)requestData {
+    NSString *URLString = @"/easyM/getAllKonwPoint";
+    NSDictionary *params = @{
+                             @"knowProjectID": self.memoId
+                             };
+    
+    EMWeakSelf;
+    [[EMSessionManager shareInstance] getRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+        NSString *response = [NSString stringWithFormat:@"%@", responseObject[@"response"]];
+        if ([response isEqualToString:@"200"]) {
+            if ([responseObject[@"knowPoints"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dict in responseObject[@"knowPoints"]) {
+                    EMKnowPointModel *model = [EMKnowPointModel yy_modelWithDictionary:dict];
+                    [weakSelf.memoPointArr addObject:model];
+                }
+                
+                [weakSelf.tableView reloadData];
+            } else {
+                NSLog(@"responseObject - %@", responseObject);
+            }
+        } else {
+            NSLog(@"responseObject - %@", responseObject);
+        }
+        
+    } fail:^(NSError * _Nullable error) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
+    }];
+}
+
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -100,7 +135,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EMMemoPointListViewCell" forIndexPath:indexPath];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EMMemoPointListViewCell"];
-    cell.textLabel.text = self.memoPointArr[indexPath.row];
+    EMKnowPointModel *model = self.memoPointArr[indexPath.row];
+    cell.textLabel.text = model.question;
     return cell;
 }
 
@@ -120,8 +156,7 @@
         NSLog(@"你输入的问题======%@", questionTextField.text);
         NSLog(@"你输入的答案======%@", answerTextField.text);
 
-        [self.memoPointArr addObject:questionTextField.text];
-        [self.tableView reloadData];
+        [self createKnowPointWithQuestion:questionTextField.text answer:answerTextField.text];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
@@ -129,6 +164,54 @@
     
     // 弹出提示框
     [self presentViewController:alertController animated:true completion:nil];
+}
+
+- (void)createKnowPointWithQuestion:(NSString *)question answer:(NSString *)answer {
+    NSString *URLString = @"/easyM/createKnowPoint";
+    NSString *uuid = [self uuidString];
+    NSDictionary *dict = @{
+                           @"knowPointID": uuid,
+                           @"question" : question,
+                           @"answer" : answer,
+                           @"knowProjectID" : self.memoId,
+                           };
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&parseError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSDictionary *params = @{
+                             @"pointJSON" : jsonString
+                             };
+    
+    EMWeakSelf;
+    [[EMSessionManager shareInstance] postRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+        [SVProgressHUD showSuccessWithStatus:@"知识点添加成功"];
+        EMKnowPointModel *model = [EMKnowPointModel new];
+        model.question = question;
+        model.answer = answer;
+        [weakSelf.memoPointArr addObject:model];
+        [weakSelf.tableView reloadData];
+    } fail:^(NSError * _Nullable error) {
+        NSLog(@"%@", [NSString stringWithFormat:@"%@", error]);
+    }];
+}
+
+#pragma mark - private methods
+/**
+ *  生成32位UUID
+ */
+- (NSString *)uuidString{
+    
+    CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+    CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+    NSString *uuid = [NSString stringWithString:(__bridge NSString *)uuid_string_ref];
+    CFRelease(uuid_ref);
+    CFRelease(uuid_string_ref);
+    
+    NSString *UUID = [uuid lowercaseString];
+    
+    NSLog(@"随机生成 —— UUID —— %@", UUID);
+    
+    return UUID;
 }
 
 - (void)orderByTimeBtnClicked {
@@ -148,9 +231,9 @@
     if (!_memoPointArr) {
         _memoPointArr = [NSMutableArray array];
         
-        for (int i = 0; i < 5; i++) {
-            [_memoPointArr addObject:[NSString stringWithFormat:@"这是问题啊 —— %d", i + 1]];
-        }
+//        for (int i = 0; i < 5; i++) {
+//            [_memoPointArr addObject:[NSString stringWithFormat:@"这是问题啊 —— %d", i + 1]];
+//        }
     }
     return _memoPointArr;
 }

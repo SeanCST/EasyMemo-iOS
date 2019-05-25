@@ -7,7 +7,6 @@
 //
 
 #import "EMRegisterViewController.h"
-#import "EMUserInfo.h"
 
 @interface EMRegisterViewController ()
 @property (nonatomic, strong) UITextField *phoneField;

@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EMMemoPointListViewController : UIViewController
+- (instancetype)initWithMemoName:(NSString *)memoName memoId:(NSString *)memoId;
 
-- (instancetype)initWithMemoName:(NSString *)memoName;
 
 @end
 

@@ -46,10 +46,14 @@
 //
 //}
 
-- (void)setMemoName:(NSString *)memoName {
-    _memoName = memoName;
-    self.nameLabel.text = memoName;
+- (void)setProjectModel:(EMProjectModel *)model {
+    self.nameLabel.text = model.know_project_name;
 }
+
+//- (void)setMemoName:(NSString *)memoName {
+//    _memoName = memoName;
+//    self.nameLabel.text = memoName;
+//}
 
 /**
  重用前清空 cell 内数据的方法
