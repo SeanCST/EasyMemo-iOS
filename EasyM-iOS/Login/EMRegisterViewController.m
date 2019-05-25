@@ -12,6 +12,10 @@
 @property (nonatomic, strong) UITextField *phoneField;
 @property (nonatomic, strong) UITextField *passwordField;
 @property (nonatomic, strong) UITextField *verifyCodeField;
+@property (nonatomic, strong) UIButton *verifyCodeBtn;
+@property (nonatomic, strong) NSTimer *countDownTimer;
+@property (nonatomic, assign) NSUInteger countDownSeconds;
+
 @end
 
 
@@ -108,6 +112,7 @@
     [verifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [verifyCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [verifyCodeBtn setBackgroundImage:[self imageWithColor:EMBackgroundColor] forState:UIControlStateNormal];
+    [verifyCodeBtn setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateSelected];
     [verifyCodeBtn setBackgroundImage:[self imageWithColor:EMButtonClickedColor] forState:UIControlStateHighlighted];
     [verifyCodeBtn addTarget:self action:@selector(verifyCodeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [verifyCodeBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
@@ -117,6 +122,7 @@
     .widthIs(90)
     .heightIs(30)
     .centerYEqualToView(phoneField);
+    self.verifyCodeBtn = verifyCodeBtn;
     
     // 完成注册并登陆按钮
     UIButton *rigisterBtn = [[UIButton alloc] init];
@@ -138,7 +144,27 @@
  获取验证码
  */
 - (void)verifyCodeBtnClicked {
-    
+    self.verifyCodeBtn.enabled = NO;
+    self.verifyCodeBtn.selected = YES;
+    self.countDownTimer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(timeCountDown) userInfo:nil repeats:YES];
+    self.countDownSeconds = 10;
+    [[NSRunLoop currentRunLoop] addTimer:self.countDownTimer forMode:NSRunLoopCommonModes];
+}
+
+/**
+ 短信倒计时
+ */
+- (void)timeCountDown {
+    NSLog(@"%@", [NSString stringWithFormat:@"%lu 秒", (unsigned long)self.countDownSeconds]);
+    if (self.countDownSeconds == 0) {
+        self.verifyCodeBtn.enabled = YES;
+        self.verifyCodeBtn.selected = NO;
+        [self.countDownTimer invalidate];
+        self.countDownTimer = nil;
+        [self.verifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        return;
+    }
+    [self.verifyCodeBtn setTitle:[NSString stringWithFormat:@"%lu 秒", (unsigned long)self.countDownSeconds--] forState:UIControlStateNormal];
 }
 
 /**

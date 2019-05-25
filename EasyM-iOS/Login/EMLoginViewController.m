@@ -117,24 +117,30 @@
  登陆 - 网络请求
  */
 - (void)loginBtnClicked {
-//    NSString *URLString = [NSString stringWithFormat:@"%@/login/cellphone", BaseUrl];
-//    NSDictionary *params = @{@"phone": self.phoneField.text,
-//                             @"password": self.passwordField.text
-//                             };
     
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    [manager GET:URLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) { // 登陆成功
+    NSString *URLString = @"/easyM/login";
+    NSDictionary *params = @{
+                             @"phoneNumber": self.phoneField.text,
+                             @"password": self.passwordField.text
+                             };
     
-        // 存储已登录的状态
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:@"LoginedAccount"];
-        
-        // 发送通知跳转控制器
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginSuccessChangeVC" object:nil];
-        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//
-//    }];
+    [[EMSessionManager shareInstance] postRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+
+        if ([@"200" isEqualToString:responseObject[@"response"]]) {
+            [SVProgressHUD showSuccessWithStatus:@"登陆成功"];
+            // 存储已登录的状态
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setBool:YES forKey:@"LoginedAccount"];
+            
+            // 发送通知跳转控制器
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginSuccessChangeVC" object:nil];
+        } else {
+            [SVProgressHUD showInfoWithStatus:responseObject[@"response"]];
+        }
+
+    } fail:^(NSError * _Nullable error) {
+        [SVProgressHUD showErrorWithStatus:@"登陆失败"];
+    }];
     
 }
 

@@ -32,6 +32,8 @@
 		14BC6E0722203EF9006D5326 /* EMHomeMemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */; };
 		14E4A0CA2228209400C4813D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E4A0C92228209400C4813D /* Assets.xcassets */; };
 		14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */; };
+		14F5F2DE2297D629000A8FB6 /* EMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F5F2DD2297D629000A8FB6 /* EMBaseModel.m */; };
+		14F5F2E12297D776000A8FB6 /* EMSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F5F2E02297D776000A8FB6 /* EMSessionManager.m */; };
 		5880BD6C956FB0588AE8C962 /* libPods-EasyM-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,10 @@
 		14E4A0C92228209400C4813D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14ED138522242A72007E3EFD /* EMMemoPointListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMemoPointListViewController.h; sourceTree = "<group>"; };
 		14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMemoPointListViewController.m; sourceTree = "<group>"; };
+		14F5F2DC2297D629000A8FB6 /* EMBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMBaseModel.h; sourceTree = "<group>"; };
+		14F5F2DD2297D629000A8FB6 /* EMBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMBaseModel.m; sourceTree = "<group>"; };
+		14F5F2DF2297D776000A8FB6 /* EMSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSessionManager.h; sourceTree = "<group>"; };
+		14F5F2E02297D776000A8FB6 /* EMSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSessionManager.m; sourceTree = "<group>"; };
 		1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyM-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		25CD304765EB7AC50A04BC02 /* libPods-EasyM-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyM-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B7107570AE021FE957E312 /* Pods-EasyM-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyM-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				14BC6DE2221EC89B006D5326 /* Discovery */,
 				146D28F22296D467005E4992 /* Message */,
 				14BC6DE5221EC89B006D5326 /* Me */,
+				14F5F2DA2297D5DD000A8FB6 /* Service */,
 				14BC6DE6221EC8C8006D5326 /* Base */,
 				14BC6E0022201B91006D5326 /* Supporting Files */,
 			);
@@ -373,6 +380,25 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		14F5F2DA2297D5DD000A8FB6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				14F5F2DB2297D5DD000A8FB6 /* EMBaseNetworkService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		14F5F2DB2297D5DD000A8FB6 /* EMBaseNetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				14F5F2DC2297D629000A8FB6 /* EMBaseModel.h */,
+				14F5F2DD2297D629000A8FB6 /* EMBaseModel.m */,
+				14F5F2DF2297D776000A8FB6 /* EMSessionManager.h */,
+				14F5F2E02297D776000A8FB6 /* EMSessionManager.m */,
+			);
+			path = EMBaseNetworkService;
+			sourceTree = "<group>";
+		};
 		E6AC1A39C7D99B1A7EDE1160 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,11 +561,13 @@
 				14B94AD122219116008E0FF8 /* EMDiscoveryUpdatingsTableViewCell.m in Sources */,
 				14BC6E0722203EF9006D5326 /* EMHomeMemoCollectionViewCell.m in Sources */,
 				14BC6DF3221EDC4F006D5326 /* EMNavigationController.m in Sources */,
+				14F5F2DE2297D629000A8FB6 /* EMBaseModel.m in Sources */,
 				1451A4B221DF14FD00012930 /* main.m in Sources */,
 				144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */,
 				146D28F12296C519005E4992 /* EMRegisterViewController.m in Sources */,
 				1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */,
 				14BC6DFF221EDD46006D5326 /* EMHomeViewController.m in Sources */,
+				14F5F2E12297D776000A8FB6 /* EMSessionManager.m in Sources */,
 				145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */,
 				145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */,
 				14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */,
