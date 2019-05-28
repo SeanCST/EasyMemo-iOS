@@ -21,10 +21,13 @@
 
 @implementation EMMemoPointListViewController
 
-- (instancetype)initWithMemoName:(NSString *)memoName memoId:(NSString *)memoId {
+- (instancetype)initWithMemoModel:(EMProjectModel *)model {
     if (self = [super init]) {
-        self.memoName = memoName;
-        self.memoId = memoId;
+        self.memoName = model.knowProjectName;
+        self.memoId = model.knowProjectID;
+        for (EMKnowPointModel *pointModel in model.knowPoints) {
+            [self.memoPointArr addObject:pointModel];
+        }
     }
     return self;
 }
@@ -35,7 +38,7 @@
     self.title = self.memoName;
     
     [self setupUI];
-    [self requestData];
+//    [self requestData];
 }
 
 - (void)setupUI {
@@ -68,34 +71,35 @@
 }
 
 #pragma mark - Data
-- (void)requestData {
-    NSString *URLString = @"/easyM/getAllKonwPoint";
-    NSDictionary *params = @{
-                             @"knowProjectID": self.memoId
-                             };
-    
-    EMWeakSelf;
-    [[EMSessionManager shareInstance] getRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
-        NSString *response = [NSString stringWithFormat:@"%@", responseObject[@"response"]];
-        if ([response isEqualToString:@"200"]) {
-            if ([responseObject[@"knowPoints"] isKindOfClass:[NSArray class]]) {
-                for (NSDictionary *dict in responseObject[@"knowPoints"]) {
-                    EMKnowPointModel *model = [EMKnowPointModel yy_modelWithDictionary:dict];
-                    [weakSelf.memoPointArr addObject:model];
-                }
-                
-                [weakSelf.tableView reloadData];
-            } else {
-                NSLog(@"responseObject - %@", responseObject);
-            }
-        } else {
-            NSLog(@"responseObject - %@", responseObject);
-        }
-        
-    } fail:^(NSError * _Nullable error) {
-        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
-    }];
-}
+//- (void)requestData {
+
+//    NSString *URLString = @"/easyM/getAllKonwPoint";
+//    NSDictionary *params = @{
+//                             @"knowProjectID": self.memoId
+//                             };
+//
+//    EMWeakSelf;
+//    [[EMSessionManager shareInstance] getRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+//        NSString *response = [NSString stringWithFormat:@"%@", responseObject[@"response"]];
+//        if ([response isEqualToString:@"200"]) {
+//            if ([responseObject[@"knowPoints"] isKindOfClass:[NSArray class]]) {
+//                for (NSDictionary *dict in responseObject[@"knowPoints"]) {
+//                    EMKnowPointModel *model = [EMKnowPointModel yy_modelWithDictionary:dict];
+//                    [weakSelf.memoPointArr addObject:model];
+//                }
+//
+//                [weakSelf.tableView reloadData];
+//            } else {
+//                NSLog(@"responseObject - %@", responseObject);
+//            }
+//        } else {
+//            NSLog(@"responseObject - %@", responseObject);
+//        }
+//
+//    } fail:^(NSError * _Nullable error) {
+//        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
+//    }];
+//}
 
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
@@ -230,10 +234,6 @@
 - (NSMutableArray *)memoPointArr {
     if (!_memoPointArr) {
         _memoPointArr = [NSMutableArray array];
-        
-//        for (int i = 0; i < 5; i++) {
-//            [_memoPointArr addObject:[NSString stringWithFormat:@"这是问题啊 —— %d", i + 1]];
-//        }
     }
     return _memoPointArr;
 }

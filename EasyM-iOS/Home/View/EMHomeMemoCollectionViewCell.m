@@ -47,7 +47,7 @@
 //}
 
 - (void)setProjectModel:(EMProjectModel *)model {
-    self.nameLabel.text = model.know_project_name;
+    self.nameLabel.text = model.knowProjectName;
 }
 
 //- (void)setMemoName:(NSString *)memoName {

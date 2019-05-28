@@ -10,6 +10,12 @@
 
 @implementation EMProjectModel
 
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
+    return @{
+             @"knowPoints" : [EMKnowPointModel class]
+             };
+}
+
 @end
 
 @implementation EMKnowPointModel 

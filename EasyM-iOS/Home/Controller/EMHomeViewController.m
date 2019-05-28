@@ -122,7 +122,7 @@
         NSLog(@"couldn't find index path");
     } else {
         EMProjectModel *projModel = self.memoArr[indexPath.row];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:projModel.know_project_name message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:projModel.knowProjectName message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *editAction = [UIAlertAction actionWithTitle:@"编辑" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSLog(@"编辑——");
         }];
@@ -130,7 +130,7 @@
             NSLog(@"分享——");
         }];
         UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSLog(@"删除—— %@", projModel.know_project_name);
+            NSLog(@"删除—— %@", projModel.knowProjectName);
             [self deleteProjectAtIndex:indexPath.row];
         }];
         
@@ -167,8 +167,8 @@
     [[EMSessionManager shareInstance] postRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
         [SVProgressHUD showSuccessWithStatus:@"笔记创建成功"];
         EMProjectModel *model = [EMProjectModel new];
-        model.know_project_name = title;
-        model.know_project_id = uuid;
+        model.knowProjectName = title;
+        model.knowProjectID = uuid;
         [weakSelf.memoArr addObject:model];
         [weakSelf.collectionView reloadData];
     } fail:^(NSError * _Nullable error) {
@@ -182,8 +182,8 @@
     EMProjectModel *projModel = self.memoArr[index];
     NSDictionary *dict = @{
                             @"createUserId": userModel.uID,
-                            @"knowProjectName" : projModel.know_project_name,
-                            @"knowProjectID" : projModel.know_project_id,
+                            @"knowProjectName" : projModel.knowProjectName,
+                            @"knowProjectID" : projModel.knowProjectID,
                             };
     NSError *parseError = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&parseError];
@@ -231,7 +231,7 @@
 
     EMProjectModel *projModel = self.memoArr[indexPath.row];
     
-    EMMemoPointListViewController *vc = [[EMMemoPointListViewController alloc] initWithMemoName:projModel.know_project_name memoId:projModel.know_project_id];
+    EMMemoPointListViewController *vc = [[EMMemoPointListViewController alloc] initWithMemoModel:projModel];
     [self.navigationController pushViewController:vc animated:YES];
     
     self.hidesBottomBarWhenPushed = NO; // 加这一句防止放回的时候也不显示 tabbar 了

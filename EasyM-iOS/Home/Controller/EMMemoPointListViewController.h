@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class EMProjectModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EMMemoPointListViewController : UIViewController
-- (instancetype)initWithMemoName:(NSString *)memoName memoId:(NSString *)memoId;
+- (instancetype)initWithMemoModel:(EMProjectModel *)model;
 
 
 @end

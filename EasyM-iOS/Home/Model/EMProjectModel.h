@@ -11,8 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EMProjectModel : NSObject <YYModel>
-@property (nonatomic, copy) NSString *know_project_id;
-@property (nonatomic, copy) NSString *know_project_name;
+@property (nonatomic, copy) NSString *knowProjectID;
+@property (nonatomic, copy) NSString *knowProjectName;
+@property (nonatomic, copy) NSString *brief;
+@property (nonatomic, assign) NSInteger knowPointCount;
+@property (nonatomic, strong) NSArray *knowPoints;
 
 @end
 
