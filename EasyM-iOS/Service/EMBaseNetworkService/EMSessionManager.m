@@ -81,24 +81,48 @@
         NSLog(@"error:%@", error);
         fail(error);
     }];
-    
-    
+}
 
-//    [[[[self class] shareInstance] dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//        if (error) {
-//            if (fail) {
-//                NSError *err = [NSError errorWithDomain:error.domain code:error.code userInfo:@{NSLocalizedDescriptionKey : @""}];
-//                fail(err);
-//            }
-//        } else {
-//            if (success) {
-//                NSError *error;
-//                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
-//                NSLog(@"URL:%@ JSON:%@", url, json);
-//                success(json);
-//            }
-//        }
-//    }] resume];
+- (void)uploadImageWithURL:(NSString *)url image:(UIImage *)image success:(Success)success fail:(Fail)fail {
+
+    EMSessionManager *manager = [EMSessionManager shareInstance];
+    EMUserModel *userModel = [EMUserInfo getLocalUser];
+    [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        // formData 将要上传的数据
+        NSData *data = UIImagePNGRepresentation(image);
+        // 方法一
+        /**
+         data:上传文件二进制数据
+         name:接口的名字
+         fileName:文件上传到服务器之后叫什么名字
+         mineType:上传文件的类型，可以上传任意二进制mineType.
+         */
+        NSString *fileName = [NSString stringWithFormat:@"headImage_%@_%@.png", userModel.username, [NSString stringWithFormat:@"%d", arc4random() % 10000]];
+        
+        [formData appendPartWithFileData:data name:@"image" fileName:fileName mimeType:@"image/png"];
+        //        // 方法二
+        //        /**
+        //         data:上传文件二进制数据
+        //         name:接口的名字
+        //         这种方法内部会将文件名当做上传到服务器之后的名字，并自动获取其类型
+        //         */
+        NSData *uidData = [userModel.uID dataUsingEncoding:NSUTF8StringEncoding];
+        [formData appendPartWithFormData:uidData name:@"user_id"];
+        
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        // 上传进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 上传成功
+        NSDictionary *resDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"responseDict:%@", resDict);
+        success(resDict);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 上传失败
+        NSLog(@"上传失败");
+        fail(error);
+    }];
+    
 }
 
 
@@ -126,18 +150,8 @@
     [manager startMonitoring];
 }
 
+
+
+
 @end
 
-
-//[[[self class] shareInstance] POST:[kBaseURL stringByAppendingString:url] parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-//
-//} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//    NSError *error = nil;
-//    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&error];
-//    NSLog(@"URL:%@ JSON:%@", url, json);
-//    success(json);
-//
-//} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//    NSError *err = [NSError errorWithDomain:error.domain code:error.code userInfo:@{NSLocalizedDescriptionKey : @""}];
-//    fail(err);
-//}];

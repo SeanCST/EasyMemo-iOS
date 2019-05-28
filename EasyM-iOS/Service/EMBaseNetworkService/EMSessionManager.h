@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)postRequestWithURL:(NSString *)url parameters:(NSDictionary *)params success:(Success)success fail:(Fail)fail;
 
+- (void)uploadImageWithURL:(NSString *)url image:(UIImage *)image success:(Success)success fail:(Fail)fail;
+
 - (void)networkStatusChanged;
 
 @end

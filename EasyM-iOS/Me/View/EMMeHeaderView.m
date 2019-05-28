@@ -7,6 +7,15 @@
 //
 
 #import "EMMeHeaderView.h"
+#import "UIView+Response.h"
+#import "EMHeaderUploadViewController.h"
+
+@interface EMMeHeaderView()
+@property (nonatomic, strong) UIImageView *avatarImageView;
+@property (nonatomic, strong) UILabel *nicknameLabel;
+
+@end
+
 
 @implementation EMMeHeaderView
 
@@ -14,6 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupUI];
+//        [self setupData];
     }
     
     return self;
@@ -29,6 +39,13 @@
     .leftSpaceToView(self, 5)
     .widthIs(50)
     .heightIs(50);
+    avatarImageView.sd_cornerRadius = @(25.0);
+    avatarImageView.clipsToBounds = YES;
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewTaped)];
+    [avatarImageView addGestureRecognizer:recognizer];
+    avatarImageView.userInteractionEnabled = YES;
+    self.avatarImageView = avatarImageView;
     
     // 2. 昵称
     UILabel *nicknameLabel = [UILabel new];
@@ -39,7 +56,8 @@
     .topSpaceToView(self, 15)
     .leftSpaceToView(avatarImageView, 20);
     [nicknameLabel setSingleLineAutoResizeWithMaxWidth:(kScreenWidth - 50 - 30)];
-    [nicknameLabel setText:@"学霸啊啊"];
+    [nicknameLabel setText:@"默认用户名"];
+    self.nicknameLabel = nicknameLabel;
     
     // 3. 简介
     UILabel *briefIntroLabel = [UILabel new];
@@ -101,6 +119,21 @@
     .centerYEqualToView(followBtn)
     .centerXIs(kScreenWidth / 2);
     
+}
+
+- (void)setupData {
+    EMUserModel *model = [EMUserInfo getLocalUser];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kBaseURL, model.img]] placeholderImage:[UIImage imageNamed:@"icon_avatar_default"]];
+    [self.nicknameLabel setText:model.username];
+}
+
+
+#pragma mark - 事件
+- (void)avatarImageViewTaped {
+    NSLog(@"avatarImageViewTaped");
+    
+    EMHeaderUploadViewController *vc = [[EMHeaderUploadViewController alloc] init];
+    [[self parentViewController].navigationController pushViewController:vc animated:YES];
 }
 
 /*

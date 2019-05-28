@@ -1,8 +1,8 @@
 //
-//  EMMeHeaderView.h
+//  EMHeaderUploadViewController.h
 //  EasyM-iOS
 //
-//  Created by SeanCST on 2019/2/24.
+//  Created by SeanCST on 2019/5/28.
 //  Copyright © 2019 NilOrg. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMMeHeaderView : UIView
-- (void)setupData;
+@interface EMHeaderUploadViewController : UIViewController
+
 @end
 
 NS_ASSUME_NONNULL_END

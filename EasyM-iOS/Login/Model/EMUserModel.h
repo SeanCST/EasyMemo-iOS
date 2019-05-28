@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *lastLoginTime;
 @property (nonatomic, copy) NSString *uID;
-
+@property (nonatomic, copy) NSString *img;
 @end
 
 NS_ASSUME_NONNULL_END
