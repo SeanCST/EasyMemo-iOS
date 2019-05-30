@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		143D2339222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */; };
+		143E1D05229EC851004ADC8D /* EMDiscoverySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D04229EC851004ADC8D /* EMDiscoverySearchViewController.m */; };
+		143E1D08229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D07229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m */; };
+		143E1D0B229EED93004ADC8D /* EMPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D0A229EED93004ADC8D /* EMPublishViewController.m */; };
+		143E1D0E229EF477004ADC8D /* UIImage+GetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D0D229EF477004ADC8D /* UIImage+GetImage.m */; };
 		144772F1222562F700A99580 /* EMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F0222562F700A99580 /* EMSettingViewController.m */; };
 		144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F322256DA800A99580 /* EMSettingTableViewCell.m */; };
 		1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4A321DF14FB00012930 /* AppDelegate.m */; };
@@ -56,6 +60,14 @@
 /* Begin PBXFileReference section */
 		143D2337222AB5E10017A0F8 /* EMMemoListHeaderScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMemoListHeaderScrollView.h; sourceTree = "<group>"; };
 		143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMemoListHeaderScrollView.m; sourceTree = "<group>"; };
+		143E1D03229EC851004ADC8D /* EMDiscoverySearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoverySearchViewController.h; sourceTree = "<group>"; };
+		143E1D04229EC851004ADC8D /* EMDiscoverySearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMDiscoverySearchViewController.m; sourceTree = "<group>"; };
+		143E1D06229EE251004ADC8D /* EMDiscoverySearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoverySearchTableViewCell.h; sourceTree = "<group>"; };
+		143E1D07229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMDiscoverySearchTableViewCell.m; sourceTree = "<group>"; };
+		143E1D09229EED93004ADC8D /* EMPublishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMPublishViewController.h; sourceTree = "<group>"; };
+		143E1D0A229EED93004ADC8D /* EMPublishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMPublishViewController.m; sourceTree = "<group>"; };
+		143E1D0C229EF477004ADC8D /* UIImage+GetImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GetImage.h"; sourceTree = "<group>"; };
+		143E1D0D229EF477004ADC8D /* UIImage+GetImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GetImage.m"; sourceTree = "<group>"; };
 		144772EF222562F700A99580 /* EMSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingViewController.h; sourceTree = "<group>"; };
 		144772F0222562F700A99580 /* EMSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSettingViewController.m; sourceTree = "<group>"; };
 		144772F222256DA800A99580 /* EMSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingTableViewCell.h; sourceTree = "<group>"; };
@@ -205,6 +217,8 @@
 			children = (
 				1451D908229CDDEF00A13D4D /* UIView+Response.h */,
 				1451D909229CDDEF00A13D4D /* UIView+Response.m */,
+				143E1D0C229EF477004ADC8D /* UIImage+GetImage.h */,
+				143E1D0D229EF477004ADC8D /* UIImage+GetImage.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -306,6 +320,8 @@
 				14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */,
 				149DEAFE2226AFD600F4B3DE /* EMPointDetailViewController.h */,
 				149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */,
+				143E1D09229EED93004ADC8D /* EMPublishViewController.h */,
+				143E1D0A229EED93004ADC8D /* EMPublishViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,6 +390,8 @@
 				14B94ACD22218111008E0FF8 /* EMDiscoveryCollectionViewCell.m */,
 				14B94ACF22219116008E0FF8 /* EMDiscoveryUpdatingsTableViewCell.h */,
 				14B94AD022219116008E0FF8 /* EMDiscoveryUpdatingsTableViewCell.m */,
+				143E1D06229EE251004ADC8D /* EMDiscoverySearchTableViewCell.h */,
+				143E1D07229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -390,6 +408,8 @@
 			children = (
 				14B94AC62221795C008E0FF8 /* EMDiscoveryViewController.h */,
 				14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */,
+				143E1D03229EC851004ADC8D /* EMDiscoverySearchViewController.h */,
+				143E1D04229EC851004ADC8D /* EMDiscoverySearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -624,6 +644,7 @@
 				1451D90D229CDF1C00A13D4D /* EMHeaderUploadViewController.m in Sources */,
 				143D2339222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m in Sources */,
 				1451D90A229CDDEF00A13D4D /* UIView+Response.m in Sources */,
+				143E1D05229EC851004ADC8D /* EMDiscoverySearchViewController.m in Sources */,
 				14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */,
 				146D28F82296D49C005E4992 /* EMMessageViewController.m in Sources */,
 				14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */,
@@ -636,6 +657,7 @@
 				14BC6DF3221EDC4F006D5326 /* EMNavigationController.m in Sources */,
 				14F462FC22990FF100DF1CEE /* EMUserModel.m in Sources */,
 				14F5F2DE2297D629000A8FB6 /* EMBaseModel.m in Sources */,
+				143E1D0E229EF477004ADC8D /* UIImage+GetImage.m in Sources */,
 				1451A4B221DF14FD00012930 /* main.m in Sources */,
 				144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */,
 				146D28F12296C519005E4992 /* EMRegisterViewController.m in Sources */,
@@ -647,6 +669,8 @@
 				145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */,
 				14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */,
 				14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */,
+				143E1D08229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m in Sources */,
+				143E1D0B229EED93004ADC8D /* EMPublishViewController.m in Sources */,
 				14F46303229928B300DF1CEE /* EMProjectModel.m in Sources */,
 				14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */,
 				14BC6DF0221EDB95006D5326 /* EMTabBarController.m in Sources */,

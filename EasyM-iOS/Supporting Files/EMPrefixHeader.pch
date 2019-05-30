@@ -23,6 +23,7 @@
 
 #import "EMUserInfo.h"
 #import "EMSessionManager.h"
+#import "EMProjectModel.h"
 
 
 // 颜色

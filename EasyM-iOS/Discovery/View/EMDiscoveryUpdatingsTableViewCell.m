@@ -12,15 +12,17 @@
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *nickNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIView *memoView;
-
 @property (nonatomic, strong) UIButton *likeBtn;
+@property (nonatomic, strong) UIImageView *memoIconView;
+@property (nonatomic, strong) UILabel *memoNameLabel;
+@property (nonatomic, strong) UILabel *memoDescLabel;
+
 @end
 
 @implementation EMDiscoveryUpdatingsTableViewCell
 
-// 调用UITableView的dequeueReusableCellWithIdentifier方法时会通过这个方法初始化Cell
+// 调用 UITableView 的 dequeueReusableCellWithIdentifier 方法时会通过这个方法初始化 Cell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -28,15 +30,6 @@
     }
     return self;
 }
-
-//- (void)setupData:(Case4DataEntity *)dataEntity {
-//    _dataEntity = dataEntity;
-//
-//    _avatarImageView.image = dataEntity.avatar;
-//    _titleLabel.text = dataEntity.title;
-//    _contentLabel.text = dataEntity.content;
-//}
-
 
 - (void)initView {
     
@@ -53,7 +46,6 @@
     // nickNameLabel
     _nickNameLabel = [UILabel new];
     _nickNameLabel.font = [UIFont systemFontOfSize:16];
-//    _nickNameLabel.numberOfLines = 0;
     _nickNameLabel.preferredMaxLayoutWidth = kScreenWidth - 32 - 30; // 多行时必须设置，50 = avatar 宽度，30为 padding
     [self.contentView addSubview:_nickNameLabel];
     _nickNameLabel.sd_layout
@@ -66,9 +58,8 @@
 
     // timeLabel
     _timeLabel = [UILabel new];
-    _timeLabel.font = [UIFont systemFontOfSize:12];
+    _timeLabel.font = [UIFont systemFontOfSize:14];
     _timeLabel.textColor = [UIColor lightGrayColor];
-//    _timeLabel.numberOfLines = 0;
     _timeLabel.preferredMaxLayoutWidth = kScreenWidth - 32 - 30; // 多行时必须设置，50 = avatar 宽度，30为 padding
     [self.contentView addSubview:_timeLabel];
     _timeLabel.sd_layout
@@ -77,108 +68,97 @@
     .rightSpaceToView(self.contentView, 10)
     .autoHeightRatio(0);
     [_timeLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [_timeLabel setText:@"12 分钟前"];
+    [_timeLabel setText:@"12 分钟前 发布了笔记"];
     
-    // contentLabel
-    _contentLabel = [UILabel new];
-    _contentLabel.font = [UIFont systemFontOfSize:14];
-    _contentLabel.numberOfLines = 0;
-    _contentLabel.preferredMaxLayoutWidth = kScreenWidth - 32 - 30; // 多行时必须设置，50 = avatar 宽度，30为 padding
-    [self.contentView addSubview:_contentLabel];
-    _contentLabel.sd_layout
-    .topSpaceToView(_timeLabel, 5)
-    .leftEqualToView(_nickNameLabel)
-    .rightSpaceToView(self.contentView, 10)
-    .autoHeightRatio(0);
-    [_contentLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [_contentLabel setText:@"上传了一本新的笔记"];
-    
-    // memoView
-    _memoView = [self getMemoView];
-    
-    // 三个按钮
-    UIButton *retweetBtn = [UIButton new];
-    [self.contentView addSubview:retweetBtn];
-    [retweetBtn setTitle:@"转发" forState:UIControlStateNormal];
-    [retweetBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [retweetBtn setImage:[UIImage imageNamed:@"btn_retweet"] forState:UIControlStateNormal];
-    [retweetBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-    [retweetBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
-    retweetBtn.sd_layout
-    .leftSpaceToView(self.contentView, 0)
-    .topSpaceToView(_memoView, 5)
-    .widthIs(kScreenWidth / 2 - 30)
-    .heightIs(30);
-    
-    UIButton *commentBtn = [UIButton new];
-    [self.contentView addSubview:commentBtn];
-    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
-    [commentBtn setImage:[UIImage imageNamed:@"btn_comment"] forState:UIControlStateNormal];
-    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [commentBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-    [commentBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
-    commentBtn.sd_layout
-    .widthRatioToView(retweetBtn, 1)
-    .heightRatioToView(retweetBtn, 1)
-    .bottomEqualToView(retweetBtn)
-    .centerXEqualToView(self.contentView);
-    
-    UIButton *likeBtn = [UIButton new];
-    [self.contentView addSubview:likeBtn];
-    [likeBtn setTitle:@"赞" forState:UIControlStateNormal];
-    [likeBtn setImage:[UIImage imageNamed:@"btn_like"] forState:UIControlStateNormal];
-    [likeBtn setImage:[UIImage imageNamed:@"btn_like_fill"] forState:UIControlStateSelected];
-    [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [likeBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-    [likeBtn setTitleColor:UIColorFromRGB(0xd81e06) forState:UIControlStateSelected];
-    [likeBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
-    likeBtn.sd_layout
-    .widthRatioToView(retweetBtn, 1)
-    .heightRatioToView(retweetBtn, 1)
-    .bottomEqualToView(retweetBtn)
-    .rightSpaceToView(self.contentView, 0);
-    [likeBtn addTarget:self action:@selector(likeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    self.likeBtn = likeBtn;
-    
-    [self setupAutoHeightWithBottomView:retweetBtn bottomMargin:5];
-}
-
-- (UIView *)getMemoView {
-    UIView *memoView = [UIView new];
-    memoView.backgroundColor = [UIColor colorWithRed:170.0/255 green:170.0/255 blue:170.0/255 alpha:0.2];
-    [self.contentView addSubview:memoView];
-    memoView.sd_layout
-    .leftEqualToView(_nickNameLabel)
-    .heightIs(40)
-    .widthIs(kScreenWidth - 32 - 30)
-    .topSpaceToView(_contentLabel, 5);
-    
-    UIImageView *memoIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_memo"]];
-    [memoView addSubview:memoIconView];
-    memoIconView.sd_layout
-    .widthIs(40)
-    .heightIs(40)
-    .leftSpaceToView(memoView, 0)
-    .centerYEqualToView(memoView);
+    _memoIconView = [[UIImageView alloc] init];
+    [self.contentView addSubview:_memoIconView];
+    _memoIconView.backgroundColor = EMBackgroundColor;
+    _memoIconView.sd_layout
+    .widthIs(100)
+    .heightIs(130)
+    .leftEqualToView(_avatarImageView)
+    .topSpaceToView(_avatarImageView, 20);
     
     // memoNameLabel
-    UILabel *memoNameLabel = [UILabel new];
-    memoNameLabel.font = [UIFont systemFontOfSize:16];
-//    memoNameLabel.preferredMaxLayoutWidth = kScreenWidth - 32 - 30 - 45;
-    [memoView addSubview:memoNameLabel];
-    memoNameLabel.sd_layout
-    .heightIs(40)
-    .widthIs(kScreenWidth - 32 - 30 - 45)
-    .centerYEqualToView(memoView)
-    .leftSpaceToView(memoIconView, 0);
-    [memoNameLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [memoNameLabel setText:@"《软件体系结构笔记》"];
+    _memoNameLabel = [UILabel new];
+    _memoNameLabel.font = [UIFont systemFontOfSize:18];
+    //    memoNameLabel.preferredMaxLayoutWidth = kScreenWidth - 32 - 30 - 45;
+    [self.contentView addSubview:_memoNameLabel];
+    _memoNameLabel.sd_layout
+    .heightIs(20)
+    .widthIs(kScreenWidth - 180)
+    .topEqualToView(_memoIconView)
+    .leftSpaceToView(_memoIconView, 20);
+    [_memoNameLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [_memoNameLabel setText:@"《软件体系结构笔记》"];
     
-    return memoView;
+    // memoDescLabel
+    _memoDescLabel = [UILabel new];
+    _memoDescLabel.font = [UIFont systemFontOfSize:14];
+    _memoDescLabel.numberOfLines = 0;
+    _memoDescLabel.preferredMaxLayoutWidth = kScreenWidth - 140;
+    [self.contentView addSubview:_memoDescLabel];
+    _memoDescLabel.sd_layout
+    .topSpaceToView(_memoNameLabel, 10)
+    .leftEqualToView(_memoNameLabel)
+    .rightSpaceToView(self.contentView, 10)
+    .autoHeightRatio(0);
+    [_memoDescLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [_memoDescLabel setText:@"笔记描述笔记描述笔记描述笔记描述笔记描述笔记描述笔记描述笔记描述笔记描述笔记描述笔记描述"];
+    
+    [self setupAutoHeightWithBottomView:_memoIconView bottomMargin:5];
+
+    
+    
+    
+    // 三个按钮
+//    UIButton *retweetBtn = [UIButton new];
+//    [self.contentView addSubview:retweetBtn];
+//    [retweetBtn setTitle:@"转发" forState:UIControlStateNormal];
+//    [retweetBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [retweetBtn setImage:[UIImage imageNamed:@"btn_retweet"] forState:UIControlStateNormal];
+//    [retweetBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
+//    [retweetBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
+//    retweetBtn.sd_layout
+//    .leftSpaceToView(self.contentView, 0)
+//    .topSpaceToView(_memoView, 5)
+//    .widthIs(kScreenWidth / 2 - 30)
+//    .heightIs(30);
+//
+//    UIButton *commentBtn = [UIButton new];
+//    [self.contentView addSubview:commentBtn];
+//    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
+//    [commentBtn setImage:[UIImage imageNamed:@"btn_comment"] forState:UIControlStateNormal];
+//    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [commentBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
+//    [commentBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
+//    commentBtn.sd_layout
+//    .widthRatioToView(retweetBtn, 1)
+//    .heightRatioToView(retweetBtn, 1)
+//    .bottomEqualToView(retweetBtn)
+//    .centerXEqualToView(self.contentView);
+//
+//    UIButton *likeBtn = [UIButton new];
+//    [self.contentView addSubview:likeBtn];
+//    [likeBtn setTitle:@"赞" forState:UIControlStateNormal];
+//    [likeBtn setImage:[UIImage imageNamed:@"btn_like"] forState:UIControlStateNormal];
+//    [likeBtn setImage:[UIImage imageNamed:@"btn_like_fill"] forState:UIControlStateSelected];
+//    [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    [likeBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
+//    [likeBtn setTitleColor:UIColorFromRGB(0xd81e06) forState:UIControlStateSelected];
+//    [likeBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
+//    likeBtn.sd_layout
+//    .widthRatioToView(retweetBtn, 1)
+//    .heightRatioToView(retweetBtn, 1)
+//    .bottomEqualToView(retweetBtn)
+//    .rightSpaceToView(self.contentView, 0);
+//    [likeBtn addTarget:self action:@selector(likeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    self.likeBtn = likeBtn;
+    
 }
 
-- (void)likeBtnClicked {
-    self.likeBtn.selected = !self.likeBtn.selected;
-}
+//- (void)likeBtnClicked {
+//    self.likeBtn.selected = !self.likeBtn.selected;
+//}
 
 @end
