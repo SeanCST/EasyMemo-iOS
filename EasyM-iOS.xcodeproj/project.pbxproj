@@ -12,6 +12,7 @@
 		143E1D08229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D07229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m */; };
 		143E1D0B229EED93004ADC8D /* EMPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D0A229EED93004ADC8D /* EMPublishViewController.m */; };
 		143E1D0E229EF477004ADC8D /* UIImage+GetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D0D229EF477004ADC8D /* UIImage+GetImage.m */; };
+		143E1D1122A03F3D004ADC8D /* EMUpdatingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D1022A03F3D004ADC8D /* EMUpdatingModel.m */; };
 		144772F1222562F700A99580 /* EMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F0222562F700A99580 /* EMSettingViewController.m */; };
 		144772F422256DA800A99580 /* EMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 144772F322256DA800A99580 /* EMSettingTableViewCell.m */; };
 		1451A4A421DF14FB00012930 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1451A4A321DF14FB00012930 /* AppDelegate.m */; };
@@ -26,6 +27,7 @@
 		145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634C12222946800E3ECAD /* EMMeHeaderView.m */; };
 		146D28F12296C519005E4992 /* EMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D28F02296C519005E4992 /* EMRegisterViewController.m */; };
 		146D28F82296D49C005E4992 /* EMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D28F72296D49C005E4992 /* EMMessageViewController.m */; };
+		1474895C22BA19ED0060F3E5 /* EMUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1474895B22BA19ED0060F3E5 /* EMUserInfoViewController.m */; };
 		149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */; };
 		14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */; };
 		14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94ACA22217A04008E0FF8 /* EMDiscoveryCollectionView.m */; };
@@ -37,6 +39,7 @@
 		14BC6DFF221EDD46006D5326 /* EMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6DFE221EDD46006D5326 /* EMHomeViewController.m */; };
 		14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E03222024C8006D5326 /* EMHomeMemoCollectionView.m */; };
 		14BC6E0722203EF9006D5326 /* EMHomeMemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */; };
+		14C3290C22B7D90B00D07DC3 /* EMProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C3290B22B7D90B00D07DC3 /* EMProjectDetailViewController.m */; };
 		14E4A0CA2228209400C4813D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E4A0C92228209400C4813D /* Assets.xcassets */; };
 		14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */; };
 		14F462FC22990FF100DF1CEE /* EMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F462FB22990FF100DF1CEE /* EMUserModel.m */; };
@@ -68,6 +71,8 @@
 		143E1D0A229EED93004ADC8D /* EMPublishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMPublishViewController.m; sourceTree = "<group>"; };
 		143E1D0C229EF477004ADC8D /* UIImage+GetImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+GetImage.h"; sourceTree = "<group>"; };
 		143E1D0D229EF477004ADC8D /* UIImage+GetImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GetImage.m"; sourceTree = "<group>"; };
+		143E1D0F22A03F3D004ADC8D /* EMUpdatingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMUpdatingModel.h; sourceTree = "<group>"; };
+		143E1D1022A03F3D004ADC8D /* EMUpdatingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMUpdatingModel.m; sourceTree = "<group>"; };
 		144772EF222562F700A99580 /* EMSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingViewController.h; sourceTree = "<group>"; };
 		144772F0222562F700A99580 /* EMSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMSettingViewController.m; sourceTree = "<group>"; };
 		144772F222256DA800A99580 /* EMSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMSettingTableViewCell.h; sourceTree = "<group>"; };
@@ -96,6 +101,8 @@
 		146D28F02296C519005E4992 /* EMRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMRegisterViewController.m; sourceTree = "<group>"; };
 		146D28F62296D49C005E4992 /* EMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMessageViewController.h; sourceTree = "<group>"; };
 		146D28F72296D49C005E4992 /* EMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMessageViewController.m; sourceTree = "<group>"; };
+		1474895A22BA19ED0060F3E5 /* EMUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMUserInfoViewController.h; sourceTree = "<group>"; };
+		1474895B22BA19ED0060F3E5 /* EMUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMUserInfoViewController.m; sourceTree = "<group>"; };
 		149DEAFE2226AFD600F4B3DE /* EMPointDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMPointDetailViewController.h; sourceTree = "<group>"; };
 		149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMPointDetailViewController.m; sourceTree = "<group>"; };
 		14B94AC62221795C008E0FF8 /* EMDiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -119,6 +126,8 @@
 		14BC6E03222024C8006D5326 /* EMHomeMemoCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHomeMemoCollectionView.m; sourceTree = "<group>"; };
 		14BC6E0522203EF9006D5326 /* EMHomeMemoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMHomeMemoCollectionViewCell.h; sourceTree = "<group>"; };
 		14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHomeMemoCollectionViewCell.m; sourceTree = "<group>"; };
+		14C3290A22B7D90B00D07DC3 /* EMProjectDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMProjectDetailViewController.h; sourceTree = "<group>"; };
+		14C3290B22B7D90B00D07DC3 /* EMProjectDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMProjectDetailViewController.m; sourceTree = "<group>"; };
 		14E4A0C92228209400C4813D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14ED138522242A72007E3EFD /* EMMemoPointListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMemoPointListViewController.h; sourceTree = "<group>"; };
 		14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMemoPointListViewController.m; sourceTree = "<group>"; };
@@ -399,6 +408,8 @@
 		14BC6DFB221EDD26006D5326 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				143E1D0F22A03F3D004ADC8D /* EMUpdatingModel.h */,
+				143E1D1022A03F3D004ADC8D /* EMUpdatingModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -410,6 +421,10 @@
 				14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */,
 				143E1D03229EC851004ADC8D /* EMDiscoverySearchViewController.h */,
 				143E1D04229EC851004ADC8D /* EMDiscoverySearchViewController.m */,
+				14C3290A22B7D90B00D07DC3 /* EMProjectDetailViewController.h */,
+				14C3290B22B7D90B00D07DC3 /* EMProjectDetailViewController.m */,
+				1474895A22BA19ED0060F3E5 /* EMUserInfoViewController.h */,
+				1474895B22BA19ED0060F3E5 /* EMUserInfoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -666,10 +681,13 @@
 				14F5F2E12297D776000A8FB6 /* EMSessionManager.m in Sources */,
 				1451D910229D28E300A13D4D /* ZYHeadImageClipController.m in Sources */,
 				145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */,
+				1474895C22BA19ED0060F3E5 /* EMUserInfoViewController.m in Sources */,
 				145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */,
 				14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */,
+				14C3290C22B7D90B00D07DC3 /* EMProjectDetailViewController.m in Sources */,
 				14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */,
 				143E1D08229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m in Sources */,
+				143E1D1122A03F3D004ADC8D /* EMUpdatingModel.m in Sources */,
 				143E1D0B229EED93004ADC8D /* EMPublishViewController.m in Sources */,
 				14F46303229928B300DF1CEE /* EMProjectModel.m in Sources */,
 				14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */,

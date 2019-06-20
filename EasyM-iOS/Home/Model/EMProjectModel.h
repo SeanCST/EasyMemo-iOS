@@ -14,8 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *knowProjectID;
 @property (nonatomic, copy) NSString *knowProjectName;
 @property (nonatomic, copy) NSString *brief;
+@property (nonatomic, copy) NSString *coverImg;
+@property (nonatomic, copy) NSString *updateCreateTime;
 @property (nonatomic, assign) NSInteger knowPointCount;
 @property (nonatomic, strong) NSArray *knowPoints;
+
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *userImg;
 
 @end
 

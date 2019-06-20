@@ -13,6 +13,10 @@
 @interface EMMeHeaderView()
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *nicknameLabel;
+@property (nonatomic, strong) UIButton *toFollowBtn;
+@property (nonatomic, strong) UIButton *memoBtn;
+@property (nonatomic, strong) UIButton *followBtn;
+@property (nonatomic, strong) UIButton *fansBtn;
 
 @end
 
@@ -23,7 +27,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupUI];
-//        [self setupData];
     }
     
     return self;
@@ -49,7 +52,7 @@
     
     // 2. 昵称
     UILabel *nicknameLabel = [UILabel new];
-    nicknameLabel.font = [UIFont systemFontOfSize:16];
+    nicknameLabel.font = [UIFont systemFontOfSize:18];
     [self addSubview:nicknameLabel];
     nicknameLabel.sd_layout
     .heightIs(17)
@@ -59,24 +62,31 @@
     [nicknameLabel setText:@"默认用户名"];
     self.nicknameLabel = nicknameLabel;
     
-    // 3. 简介
-    UILabel *briefIntroLabel = [UILabel new];
-    briefIntroLabel.font = [UIFont systemFontOfSize:12];
-    briefIntroLabel.textColor = [UIColor grayColor];
-    [self addSubview:briefIntroLabel];
-//    briefIntroLabel.numberOfLines = 0;
-    briefIntroLabel.sd_layout
-    .topSpaceToView(nicknameLabel, 10)
-    .leftEqualToView(nicknameLabel)
-    .heightIs(13);
-//    .autoHeightRatio(0);
-    // 设置最大宽度
-    [briefIntroLabel setSingleLineAutoResizeWithMaxWidth:(kScreenWidth - 50 - 40)];
-    // 设置最大行数
-//    [briefIntroLabel setMaxNumberOfLinesToShow:2];
-    [briefIntroLabel setText:@"简介：你就当我是学霸吧哈哈哈或哈哈哈哈或哈哈哈哈或哈哈哈😁啊啊"];
+//    // 3. 简介
+//    UILabel *briefIntroLabel = [UILabel new];
+//    briefIntroLabel.font = [UIFont systemFontOfSize:12];
+//    briefIntroLabel.textColor = [UIColor grayColor];
+//    [self addSubview:briefIntroLabel];
+//    briefIntroLabel.sd_layout
+//    .topSpaceToView(nicknameLabel, 10)
+//    .leftEqualToView(nicknameLabel)
+//    .heightIs(13);
+//    // 设置最大宽度
+//    [briefIntroLabel setSingleLineAutoResizeWithMaxWidth:(kScreenWidth - 50 - 40)];
+//    // 设置最大行数
+//    [briefIntroLabel setText:@"简介：你就当我是学霸吧哈哈哈或哈哈哈哈或哈哈哈哈或哈哈哈😁啊啊"];
     
-    // 4. 分割小段
+    // 4. 中间分割线
+    UIView *midSeperateLine = [UIView new];
+    [self addSubview:midSeperateLine];
+    midSeperateLine.backgroundColor = UIColorFromRGB(0xefefef);
+    midSeperateLine.sd_layout
+    .widthIs(kScreenWidth)
+    .heightIs(1)
+    .leftEqualToView(self)
+    .topSpaceToView(avatarImageView, 10);
+    
+    // 5. 底部分割小段
     UIView *bottomSeperateLine = [UIView new];
     [self addSubview:bottomSeperateLine];
     bottomSeperateLine.backgroundColor = UIColorFromRGB(0xefefef);
@@ -86,47 +96,77 @@
     .leftEqualToView(self)
     .bottomEqualToView(self);
     
-    // 5. 关注/粉丝按钮
+    // 6. 关注按钮
+    UIButton *toFollowBtn = [UIButton new];
+    [self addSubview:toFollowBtn];
+    [toFollowBtn setTitle:@"+ 关注" forState:UIControlStateNormal];
+    [toFollowBtn setTitle:@"已关注" forState:UIControlStateSelected];
+    [toFollowBtn setBackgroundImage:[UIImage imageWithColor:EMBackgroundColor] forState:UIControlStateNormal];
+    [toFollowBtn setBackgroundImage:[UIImage imageWithColor:EMButtonClickedColor] forState:UIControlStateNormal];
+    [toFollowBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    toFollowBtn.sd_layout
+    .topSpaceToView(self, 15)
+    .widthIs(60)
+    .heightIs(30)
+    .rightSpaceToView(self, 30);
+    toFollowBtn.sd_cornerRadius = @(5);
+    toFollowBtn.clipsToBounds = YES;
+    self.toFollowBtn = toFollowBtn;
+    [self.toFollowBtn addTarget:self action:@selector(toFollowBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 7. 笔记/关注/粉丝按钮
+    UIButton *memoBtn = [UIButton new];
+    [self addSubview:memoBtn];
+    [memoBtn setTitle:@"笔记" forState:UIControlStateNormal];
+    [memoBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [memoBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    memoBtn.sd_layout
+    .topSpaceToView(midSeperateLine, 0)
+    .widthIs(kScreenWidth / 3)
+    .heightIs(50)
+    .leftEqualToView(self);
+    self.memoBtn = memoBtn;
+    
     UIButton *followBtn = [UIButton new];
     [self addSubview:followBtn];
-    [followBtn setTitle:@"113 我关注的人" forState:UIControlStateNormal];
+    [followBtn setTitle:@"关注" forState:UIControlStateNormal];
     [followBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [followBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     followBtn.sd_layout
-    .bottomSpaceToView(bottomSeperateLine, 5)
-    .widthIs(kScreenWidth / 2)
-    .heightIs(30)
-    .centerXIs(kScreenWidth / 4);
+    .bottomEqualToView(memoBtn)
+    .widthRatioToView(memoBtn, 1)
+    .heightRatioToView(memoBtn, 1)
+    .leftSpaceToView(memoBtn, 0);
+    self.followBtn = followBtn;
     
     UIButton *fansBtn = [UIButton new];
     [self addSubview:fansBtn];
-    [fansBtn setTitle:@"1777 关注我的人" forState:UIControlStateNormal];
+    [fansBtn setTitle:@"粉丝" forState:UIControlStateNormal];
     [fansBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [fansBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     fansBtn.sd_layout
-    .topEqualToView(followBtn)
-    .widthRatioToView(followBtn, 1)
-    .heightRatioToView(followBtn, 1)
-    .centerXIs(kScreenWidth / 4 * 3);
-    
-    // 6. 关注、粉丝之间的分割竖线
-    UIView *seperateLine = [UIView new];
-    [self addSubview:seperateLine];
-    seperateLine.backgroundColor = [UIColor grayColor];
-    seperateLine.sd_layout
-    .widthIs(1)
-    .heightIs(10)
-    .centerYEqualToView(followBtn)
-    .centerXIs(kScreenWidth / 2);
-    
+    .bottomEqualToView(memoBtn)
+    .widthRatioToView(memoBtn, 1)
+    .heightRatioToView(memoBtn, 1)
+    .leftSpaceToView(followBtn, 0);
+    self.fansBtn = fansBtn;
 }
 
-- (void)setupData {
-    EMUserModel *model = [EMUserInfo getLocalUser];
+- (void)setModel:(EMUserModel *)model
+{
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kBaseURL, model.img]] placeholderImage:[UIImage imageNamed:@"icon_avatar_default"]];
     [self.nicknameLabel setText:model.username];
+    
+    if (!model.isOther) {
+        self.toFollowBtn.hidden = YES;
+    }
+    
+    NSString *memoBtnText = [NSString stringWithFormat:@"%ld 笔记", (long)model.projectNumber];
+    NSLog(@"%@", memoBtnText);
+    [self.memoBtn setTitle:memoBtnText forState:UIControlStateNormal];
+    [self.fansBtn setTitle:[NSString stringWithFormat:@"%ld 粉丝", (long)model.fansNumber] forState:UIControlStateNormal];
+    [self.followBtn setTitle:[NSString stringWithFormat:@"%ld 关注", (long)model.focusNumber] forState:UIControlStateNormal];
 }
-
 
 #pragma mark - 事件
 - (void)avatarImageViewTaped {
@@ -134,6 +174,10 @@
     
     EMHeaderUploadViewController *vc = [[EMHeaderUploadViewController alloc] init];
     [[self parentViewController].navigationController pushViewController:vc animated:YES];
+}
+
+- (void)toFollowBtnClicked {
+    self.toFollowBtn.selected = !self.toFollowBtn.selected;
 }
 
 /*

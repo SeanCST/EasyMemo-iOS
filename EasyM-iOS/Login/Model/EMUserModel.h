@@ -22,7 +22,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *lastLoginTime;
 @property (nonatomic, copy) NSString *uID;
 @property (nonatomic, copy) NSString *img;
+
+
+@property (nonatomic, assign) NSInteger projectNumber;
+@property (nonatomic, assign) NSInteger focusNumber;
+@property (nonatomic, assign) NSInteger fansNumber;
+
+
+/* 标记是自己还是他人 */
+@property (nonatomic, assign, getter=isOther) BOOL other;
+
 @end
+
 
 NS_ASSUME_NONNULL_END
 

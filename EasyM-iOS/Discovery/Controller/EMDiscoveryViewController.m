@@ -11,12 +11,16 @@
 //#import "EMDiscoveryCollectionViewCell.h"
 #import "EMDiscoveryUpdatingsTableViewCell.h"
 #import "EMDiscoverySearchViewController.h"
+#import "EMUpdatingModel.h"
+#import "EMProjectDetailViewController.h"
 
 @interface EMDiscoveryViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 //@property (nonatomic, strong) NSMutableArray *categoryArr;
 //@property (nonatomic, strong) EMDiscoveryCollectionView *collectionView;
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *updates;
 
 @end
 
@@ -29,6 +33,8 @@
     
     // 设置UI
     [self setupUI];
+    
+    [self requestData];
 }
 
 #pragma mark - setupUI
@@ -63,6 +69,33 @@
     self.tableView = discoveryUpdatingsTableView;
 }
 
+#pragma mark - requestData
+- (void)requestData {
+    NSString *URLString = @"/easyM/getAllUpdates";
+    EMUserModel *userModel = [EMUserInfo getLocalUser];
+    NSDictionary *params = @{
+                             @"userId": userModel.uID
+                             };
+    
+    EMWeakSelf;
+    [[EMSessionManager shareInstance] getRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dict in responseObject) {
+                EMUpdatingModel *model = [EMUpdatingModel yy_modelWithDictionary:dict];
+                [weakSelf.updates addObject:model];
+            }
+            
+            [weakSelf.tableView reloadData];
+        } else {
+            NSLog(@"responseObject - %@", responseObject);
+        }
+        
+    } fail:^(NSError * _Nullable error) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
+    }];
+    
+}
+
 
 #pragma mark - UITableViewDataSource & UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -70,7 +103,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.updates.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,11 +114,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EMDiscoveryUpdatingsTableViewCell *cell = (EMDiscoveryUpdatingsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EMDiscoveryUpdatingsTableViewCell class]) forIndexPath:indexPath];
-//    cell.contentView.backgroundColor = kRandomColor;
+    [cell setDataModel:self.updates[indexPath.row]];
     //缓存高度，tableview滑动更加流畅
     [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    EMProjectDetailViewController *detailVc = [[EMProjectDetailViewController alloc] initWithUpdatingModel:self.updates[indexPath.row]];
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -97,5 +135,12 @@
     return NO;
 }
 
+#pragma mark - lazy loading
+- (NSMutableArray *)updates {
+    if (!_updates) {
+        _updates = [NSMutableArray array];
+    }
+    return _updates;
+}
 
 @end

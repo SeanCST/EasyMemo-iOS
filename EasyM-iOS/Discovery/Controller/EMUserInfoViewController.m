@@ -1,44 +1,44 @@
+
 //
-//  EMMeViewController.m
+//  EMUserInfoViewController.m
 //  EasyM-iOS
 //
-//  Created by SeanCST on 2019/2/24.
+//  Created by SeanCST on 2019/6/19.
 //  Copyright © 2019 NilOrg. All rights reserved.
 //
 
-#import "EMMeViewController.h"
+#import "EMUserInfoViewController.h"
 #import "EMMeHeaderView.h"
 #import "EMHomeMemoCollectionView.h"
 #import "EMHomeMemoCollectionViewCell.h"
-#import "EMSettingViewController.h"
 #import "EMProjectModel.h"
 
-@interface EMMeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface EMUserInfoViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoArr;
 @property (nonatomic, strong) EMHomeMemoCollectionView *collectionView;
 @property (nonatomic, strong) EMMeHeaderView *headerView;
+@property (nonatomic, copy) NSString *userId;
+
 @property (nonatomic, strong) EMUserModel *userModel;
 
 @end
 
-@implementation EMMeViewController
+@implementation EMUserInfoViewController
 
+- (instancetype)initWithUserId:(NSString *)userId {
+    if (self = [super init]) {
+        self.userId = userId;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 左右上角 navigationItem
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(settingClicked)];
     
     self.view.backgroundColor = [UIColor whiteColor];
     // 设置UI
     [self setupUI];
     [self requestData];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    // 更新数据
-    self.headerView.model = [EMUserInfo getLocalUser];
 }
 
 #pragma mark - setupUI
@@ -69,21 +69,10 @@
     collectionView.backgroundColor = [UIColor whiteColor];
     [collectionView registerClass:[EMHomeMemoCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([EMHomeMemoCollectionViewCell class])];
     self.collectionView = collectionView;
-    
-    
 }
 
 #pragma mark - ButtonClicked
-- (void)settingClicked {
-    NSLog(@"设置————点击");
-    
-    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
 
-    EMSettingViewController *settingVc = [[EMSettingViewController alloc] init];
-    [self.navigationController pushViewController:settingVc animated:YES];
-    
-    self.hidesBottomBarWhenPushed = NO; 
-}
 
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -99,61 +88,47 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
-    
-//    EMProjectModel *projModel = self.memoArr[indexPath.row];
-    
-//    EMMemoPointListViewController *vc = [[EMMemoPointListViewController alloc] initWithMemoModel:projModel];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
     self.hidesBottomBarWhenPushed = NO; // 加这一句防止放回的时候也不显示 tabbar 了
-    
-    
 }
 
 
 #pragma mark - Data
 - (void)requestData {
-    // 获取关于笔记的信息
+    EMWeakSelf;
     NSString *URLString = @"/easyM/projects";
     EMUserModel *localUserModel = [EMUserInfo getLocalUser];
     NSDictionary *params = @{
                              @"user_uid": localUserModel.uID
                              };
-    EMWeakSelf;
     [[EMSessionManager shareInstance] getRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
             for (NSDictionary *dict in responseObject) {
                 EMProjectModel *model = [EMProjectModel yy_modelWithDictionary:dict];
                 [weakSelf.memoArr addObject:model];
             }
-            
             [weakSelf.collectionView reloadData];
         } else {
             NSLog(@"responseObject - %@", responseObject);
         }
-        
     } fail:^(NSError * _Nullable error) {
         [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
     }];
     
-    // 获取关于用户资料的信息
+    
     NSString *userInfoURLString = @"/easyM/getUserInfo";
     NSDictionary *userInfoParams = @{
-                                     @"curUserId": localUserModel.uID,
-                                     @"userId" : localUserModel.uID
-                                     };
+                             @"curUserId": localUserModel.uID,
+                             @"userId" : self.userId
+                             };
     [[EMSessionManager shareInstance] getRequestWithURL:userInfoURLString parameters:userInfoParams success:^(id  _Nullable responseObject) {
         weakSelf.userModel = [EMUserModel yy_modelWithDictionary:[responseObject firstObject]];
-        weakSelf.userModel.other = NO;
+        weakSelf.userModel.other = YES;
         
         weakSelf.headerView.model = weakSelf.userModel;
     } fail:^(NSError * _Nullable error) {
         [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
     }];
 }
-
-
-#pragma mark - private methods
 
 #pragma mark - 懒加载
 - (NSMutableArray *)memoArr {

@@ -7,12 +7,13 @@
 //
 
 #import "EMDiscoveryUpdatingsTableViewCell.h"
+#import "EMUpdatingModel.h"
 
 @interface EMDiscoveryUpdatingsTableViewCell ()
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *nickNameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UIView *memoView;
+//@property (nonatomic, strong) UIView *memoView;
 @property (nonatomic, strong) UIButton *likeBtn;
 @property (nonatomic, strong) UIImageView *memoIconView;
 @property (nonatomic, strong) UILabel *memoNameLabel;
@@ -35,13 +36,15 @@
     
     // Avatar头像
     _avatarImageView = [UIImageView new];
-    [_avatarImageView setImage:[UIImage imageNamed:@"icon_avatar_default"]];
+//    [_avatarImageView setImage:[UIImage imageNamed:@"icon_avatar_default"]];
     [self.contentView addSubview:_avatarImageView];
     _avatarImageView.sd_layout
     .topSpaceToView(self.contentView, 10)
     .leftSpaceToView(self.contentView, 10)
     .widthIs(32)
     .heightIs(32);
+    _avatarImageView.sd_cornerRadius = @(16.0);
+    _avatarImageView.clipsToBounds = YES;
     
     // nickNameLabel
     _nickNameLabel = [UILabel new];
@@ -72,7 +75,6 @@
     
     _memoIconView = [[UIImageView alloc] init];
     [self.contentView addSubview:_memoIconView];
-    _memoIconView.backgroundColor = EMBackgroundColor;
     _memoIconView.sd_layout
     .widthIs(100)
     .heightIs(130)
@@ -108,57 +110,18 @@
     
     [self setupAutoHeightWithBottomView:_memoIconView bottomMargin:5];
 
-    
-    
-    
-    // 三个按钮
-//    UIButton *retweetBtn = [UIButton new];
-//    [self.contentView addSubview:retweetBtn];
-//    [retweetBtn setTitle:@"转发" forState:UIControlStateNormal];
-//    [retweetBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-//    [retweetBtn setImage:[UIImage imageNamed:@"btn_retweet"] forState:UIControlStateNormal];
-//    [retweetBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-//    [retweetBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
-//    retweetBtn.sd_layout
-//    .leftSpaceToView(self.contentView, 0)
-//    .topSpaceToView(_memoView, 5)
-//    .widthIs(kScreenWidth / 2 - 30)
-//    .heightIs(30);
-//
-//    UIButton *commentBtn = [UIButton new];
-//    [self.contentView addSubview:commentBtn];
-//    [commentBtn setTitle:@"评论" forState:UIControlStateNormal];
-//    [commentBtn setImage:[UIImage imageNamed:@"btn_comment"] forState:UIControlStateNormal];
-//    [commentBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-//    [commentBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-//    [commentBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
-//    commentBtn.sd_layout
-//    .widthRatioToView(retweetBtn, 1)
-//    .heightRatioToView(retweetBtn, 1)
-//    .bottomEqualToView(retweetBtn)
-//    .centerXEqualToView(self.contentView);
-//
-//    UIButton *likeBtn = [UIButton new];
-//    [self.contentView addSubview:likeBtn];
-//    [likeBtn setTitle:@"赞" forState:UIControlStateNormal];
-//    [likeBtn setImage:[UIImage imageNamed:@"btn_like"] forState:UIControlStateNormal];
-//    [likeBtn setImage:[UIImage imageNamed:@"btn_like_fill"] forState:UIControlStateSelected];
-//    [likeBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-//    [likeBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateNormal];
-//    [likeBtn setTitleColor:UIColorFromRGB(0xd81e06) forState:UIControlStateSelected];
-//    [likeBtn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -15, 0.0, 0.0)];
-//    likeBtn.sd_layout
-//    .widthRatioToView(retweetBtn, 1)
-//    .heightRatioToView(retweetBtn, 1)
-//    .bottomEqualToView(retweetBtn)
-//    .rightSpaceToView(self.contentView, 0);
-//    [likeBtn addTarget:self action:@selector(likeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-//    self.likeBtn = likeBtn;
-    
 }
 
-//- (void)likeBtnClicked {
-//    self.likeBtn.selected = !self.likeBtn.selected;
-//}
+- (void)setDataModel:(EMUpdatingModel *)model {
+    NSString *avatarImgStr = [NSString stringWithFormat:@"%@%@", kBaseURL, model.headImg];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarImgStr] placeholderImage:[UIImage imageNamed:@"icon_avatar_default"]];
+    self.nickNameLabel.text = model.username;
+    self.timeLabel.text = [NSString stringWithFormat:@"%@ 发布了笔记", model.updateCreateTime];
+    NSString *coverImgStr = [NSString stringWithFormat:@"%@%@", kBaseURL, model.coverImg];
+    [self.memoIconView sd_setImageWithURL:[NSURL URLWithString:coverImgStr] placeholderImage:[UIImage imageWithColor:EMBackgroundColor]];
+    self.memoNameLabel.text = model.knowProjectName;
+    self.memoDescLabel.text = model.brief;
+}
 
 @end
+

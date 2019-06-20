@@ -21,6 +21,7 @@
 #import "YYModel.h"
 #import "UIImageView+WebCache.h"
 
+#import "UIImage+GetImage.h"
 #import "EMUserInfo.h"
 #import "EMSessionManager.h"
 #import "EMProjectModel.h"

@@ -68,7 +68,7 @@
     flowLayout.minimumInteritemSpacing = 20;
     flowLayout.minimumLineSpacing = 20;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    flowLayout.itemSize = CGSizeMake(80, 100);
+    flowLayout.itemSize = CGSizeMake(80, 130);
 
     EMHomeMemoCollectionView *collectionView = [[EMHomeMemoCollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
     [self.view addSubview:collectionView];
@@ -126,12 +126,15 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:projModel.knowProjectName message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *editAction = [UIAlertAction actionWithTitle:@"编辑" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSLog(@"编辑——");
-        }];
-        UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSLog(@"发布——");
             EMPublishViewController *pubVc = [[EMPublishViewController alloc] initWithProjectModel:projModel];
             [self.navigationController pushViewController:pubVc animated:YES];
+
         }];
+//        UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            NSLog(@"发布——");
+//            EMPublishViewController *pubVc = [[EMPublishViewController alloc] initWithProjectModel:projModel];
+//            [self.navigationController pushViewController:pubVc animated:YES];
+//        }];
         UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSLog(@"删除—— %@", projModel.knowProjectName);
             [self deleteProjectAtIndex:indexPath.row];
@@ -141,7 +144,7 @@
             NSLog(@"取消——");
         }];
         [alertController addAction:editAction];
-        [alertController addAction:shareAction];
+//        [alertController addAction:shareAction];
         [alertController addAction:deleteAction];
         [alertController addAction:cancelAction];
         [self presentViewController:alertController animated:YES completion:^{
@@ -226,6 +229,8 @@
     [self.navigationController pushViewController:vc animated:YES];
     
     self.hidesBottomBarWhenPushed = NO; // 加这一句防止放回的时候也不显示 tabbar 了
+    
+    
 }
 
 

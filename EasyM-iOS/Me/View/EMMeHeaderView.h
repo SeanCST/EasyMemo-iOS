@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EMMeHeaderView : UIView
-- (void)setupData;
+@property (nonatomic, strong) EMUserModel *model;
+
 @end
 
 NS_ASSUME_NONNULL_END

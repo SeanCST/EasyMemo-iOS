@@ -186,66 +186,44 @@ static const CGFloat maxScale = 2;
 
 // 点击确定
 - (void)P_clickTrueButton{
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(viewWeidth, viewWeidth), YES, [UIScreen mainScreen].scale);
+    // 这时候的imagerect要相对这个上下文了
+    CGRect imageRect = CGRectMake(self.chosedHeadImageView.frame.origin.x, self.chosedHeadImageView.frame.origin.y - (viewHeight-viewWeidth)/2, self.chosedHeadImageView.frame.size.width, self.chosedHeadImageView.frame.size.height);
+    
+    [self.chosedHeadImageView.image drawInRect:imageRect];
+    UIImage * tempImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // 不做这处理放大很多的情况下会有bug
+    self.chosedHeadImageView.frame = self.headImageOldRect;
 
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(viewWeidth, viewWeidth), YES, [UIScreen mainScreen].scale);
-        // 这时候的imagerect要相对这个上下文了
-        CGRect imageRect = CGRectMake(self.chosedHeadImageView.frame.origin.x, self.chosedHeadImageView.frame.origin.y - (viewHeight-viewWeidth)/2, self.chosedHeadImageView.frame.size.width, self.chosedHeadImageView.frame.size.height);
-        
-        [self.chosedHeadImageView.image drawInRect:imageRect];
-        UIImage * tempImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-        // 不做这处理放大很多的情况下会有bug
-        self.chosedHeadImageView.frame = self.headImageOldRect;
-        // 上传头像
-        [[EMSessionManager shareInstance] uploadImageWithURL:@"/easyM/upload_head_image" image:tempImage success:^(id  _Nullable responseObject) {
-            [SVProgressHUD showSuccessWithStatus:@"上传头像成功"];
-            
-            // 取出头像地址并存储
-            NSDictionary *resultDict = responseObject[@"result"];
-            NSString *imageUrl = resultDict[@"image"];
-            EMUserModel *model = [EMUserInfo getLocalUser];
-            model.img = imageUrl;
-            [EMUserInfo saveLocalUser:model];
-            
-            if (self.ZYHeadImageBlock) {  // 更新显示头像
-                self.ZYHeadImageBlock(tempImage);
-            }
-//            NSString *completeUrlStr = [NSString stringWithFormat:@"%@%@", kBaseURL, imageUrl];
-//            [self.picImageView sd_setImageWithURL:[NSURL URLWithString:completeUrlStr] placeholderImage:[UIImage imageNamed:@"icon_avatar_default"]];
-        } fail:^(NSError * _Nullable error) {
-            
-        }];
+    if (self.ZYHeadImageBlock) {  // 上传头像
+        self.ZYHeadImageBlock(tempImage);
+    }
 
-//        [ZTHMTopSender sendImageWithImage:tempImage completed:^(BOOL isSucceed, NSString * _Nullable fileUrl, NSString * _Nullable errorMsg) {
-//            NSLog(@"%d %@ %@",isSucceed,fileUrl,errorMsg);
-//            if (isSucceed) {
-//                [ZTHMTopSender sendWithApiName:@"com.bxw.piano.service.UserService.updateHeadimgUrl" apiVersion:@"v1" params:@{@"headimgUrl":fileUrl} completed:^(ZTHMTopResponseResult * _Nonnull responseResult) {
-//                    NSLog(@"%@ %@",responseResult.businessData,responseResult.ret[0]);
-//                    if ([responseResult.ret[0] hasPrefix:@"SUCCESS"]) {
-//                        LXUserInfo *userinfo = [[LXUserInfo alloc] init];
-//                        userinfo=userManager.curUserInfo;
-//                        userinfo.headerImage = fileUrl;
-//                        userManager.curUserInfo=userinfo;
-//                        [userManager saveUserInfo];
-//    //                    [self.tableView reloadData];
-//                        [SVProgressHUD showSuccessWithStatus:@"头像更改成功"];
+//    EMUserModel *userModel = [EMUserInfo getLocalUser];
+//    NSString *fileName = [NSString stringWithFormat:@"headImage_%@_%@.png", userModel.username, [NSString stringWithFormat:@"%d", arc4random() % 10000]];
 //
-//                        if (self.ZYHeadImageBlock) {  // 更新显示头像
-//                            self.ZYHeadImageBlock(tempImage);
-//                        }
-//                    }
-//                }];
-//            }
+//    // 上传头像
+//    [[EMSessionManager shareInstance] uploadImageWithURL:@"/easyM/upload_head_image" image:tempImage fileName:fileName uploadToIdName:@"user_id" uploadToId:userModel.uID success:^(id  _Nullable responseObject) {
+//        [SVProgressHUD showSuccessWithStatus:@"上传头像成功"];
 //
-//        }];
-    
-    
-    
-            [self.navigationController popViewControllerAnimated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
+//        // 取出头像地址并存储
+//        NSDictionary *resultDict = responseObject[@"result"];
+//        NSString *imageUrl = resultDict[@"image"];
+//        EMUserModel *model = [EMUserInfo getLocalUser];
+//        model.img = imageUrl;
+//        [EMUserInfo saveLocalUser:model];
+//
+//        if (self.ZYHeadImageBlock) {  // 更新显示头像
+//            self.ZYHeadImageBlock(tempImage);
+//        }
+//    } fail:^(NSError * _Nullable error) {
+//
+//    }];
+
+    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 

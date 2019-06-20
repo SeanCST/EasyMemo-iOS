@@ -9,6 +9,7 @@
 #import "EMDiscoverySearchViewController.h"
 #import "EMDiscoverySearchTableViewCell.h"
 #import "EMProjectModel.h"
+#import "EMProjectDetailViewController.h"
 
 @interface EMDiscoverySearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -82,6 +83,11 @@
     [cell useCellFrameCacheWithIndexPath:indexPath tableView:tableView];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    EMProjectDetailViewController *detailVc = [[EMProjectDetailViewController alloc] initWithProjectModel:self.searchedResults[indexPath.row]];
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 #pragma mark - UISearchBarDelegate

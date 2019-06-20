@@ -128,12 +128,29 @@
     ZYHeadImageClipController *headVC = [[ZYHeadImageClipController alloc] init];
     headVC.oldImage = pickedImage;
     headVC.ZYHeadImageBlock = ^(UIImage * headimage){
-        NSString *completeUrlStr = [NSString stringWithFormat:@"%@%@", kBaseURL, [EMUserInfo getLocalUser].img];
         
-        [self.picImageView sd_setImageWithURL:[NSURL URLWithString:completeUrlStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-
+        EMUserModel *userModel = [EMUserInfo getLocalUser];
+        NSString *fileName = [NSString stringWithFormat:@"headImage_%@_%@.png", userModel.username, [NSString stringWithFormat:@"%d", arc4random() % 10000]];
+        
+        // 上传头像
+        [[EMSessionManager shareInstance] uploadImageWithURL:@"/easyM/upload_head_image" image:headimage fileName:fileName uploadToIdName:@"user_id" uploadToId:userModel.uID success:^(id  _Nullable responseObject) {
+            [SVProgressHUD showSuccessWithStatus:@"上传头像成功"];
+            
+            // 取出头像地址并存储
+            NSDictionary *resultDict = responseObject[@"result"];
+            NSString *imageUrl = resultDict[@"image"];
+            EMUserModel *model = [EMUserInfo getLocalUser];
+            model.img = imageUrl;
+            [EMUserInfo saveLocalUser:model];
+            
+            NSString *completeUrlStr = [NSString stringWithFormat:@"%@%@", kBaseURL, [EMUserInfo getLocalUser].img];
+            [self.picImageView sd_setImageWithURL:[NSURL URLWithString:completeUrlStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+            }];
+        } fail:^(NSError * _Nullable error) {
+            [SVProgressHUD showErrorWithStatus:@"上传失败"];
+            NSLog(@"%@", error);
         }];
-
     };
 
     [self.navigationController pushViewController:headVC animated:YES];
