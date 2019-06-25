@@ -30,6 +30,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     // 设置UI
     [self setupUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     [self requestData];
 }
 
@@ -126,9 +131,12 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:projModel.knowProjectName message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *editAction = [UIAlertAction actionWithTitle:@"编辑" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSLog(@"编辑——");
+            self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
+
             EMPublishViewController *pubVc = [[EMPublishViewController alloc] initWithProjectModel:projModel];
             [self.navigationController pushViewController:pubVc animated:YES];
-
+            
+            self.hidesBottomBarWhenPushed = NO; 
         }];
 //        UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 //            NSLog(@"发布——");
@@ -245,6 +253,9 @@
     EMWeakSelf;
     [[EMSessionManager shareInstance] getRequestWithURL:URLString parameters:params success:^(id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
+            
+            [weakSelf.memoArr removeAllObjects];
+            
             for (NSDictionary *dict in responseObject) {
                 EMProjectModel *model = [EMProjectModel yy_modelWithDictionary:dict];
                 [weakSelf.memoArr addObject:model];

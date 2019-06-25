@@ -122,15 +122,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
+
     EMProjectDetailViewController *detailVc = [[EMProjectDetailViewController alloc] initWithUpdatingModel:self.updates[indexPath.row]];
     [self.navigationController pushViewController:detailVc animated:YES];
+    
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
     
     EMDiscoverySearchViewController *searchVc = [[EMDiscoverySearchViewController alloc] init];
     [self.navigationController pushViewController:searchVc animated:YES];
+    
+    self.hidesBottomBarWhenPushed = NO;
     
     return NO;
 }

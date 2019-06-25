@@ -12,6 +12,7 @@
 #import "EMHomeMemoCollectionViewCell.h"
 #import "EMSettingViewController.h"
 #import "EMProjectModel.h"
+#import "EMMeInfoChangeController.h"
 
 @interface EMMeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *memoArr;
@@ -48,6 +49,11 @@
     [self.view addSubview:headerView];
     self.headerView = headerView;
     
+    self.headerView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerViewTaped)];
+    [self.headerView addGestureRecognizer:recognizer];
+    
+    
     // 2. 笔记本列表
     // 设置 flowLayout
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -77,12 +83,20 @@
 - (void)settingClicked {
     NSLog(@"设置————点击");
     
-    self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
+    self.hidesBottomBarWhenPushed = YES; // 隐藏 tabbar
 
     EMSettingViewController *settingVc = [[EMSettingViewController alloc] init];
     [self.navigationController pushViewController:settingVc animated:YES];
     
     self.hidesBottomBarWhenPushed = NO; 
+}
+
+- (void)headerViewTaped {
+    self.hidesBottomBarWhenPushed = YES; // 隐藏 tabbar
+    EMMeInfoChangeController *vc = [[EMMeInfoChangeController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
@@ -145,8 +159,17 @@
     [[EMSessionManager shareInstance] getRequestWithURL:userInfoURLString parameters:userInfoParams success:^(id  _Nullable responseObject) {
         weakSelf.userModel = [EMUserModel yy_modelWithDictionary:[responseObject firstObject]];
         weakSelf.userModel.other = NO;
-        
         weakSelf.headerView.model = weakSelf.userModel;
+        
+        
+        EMUserModel *model = [EMUserInfo getLocalUser];
+        model.img = weakSelf.userModel.img;
+        model.username = weakSelf.userModel.username;
+        model.focusNumber = weakSelf.userModel.focusNumber;
+        model.fansNumber = weakSelf.userModel.fansNumber;
+        model.projectNumber = weakSelf.userModel.projectNumber;
+        [EMUserInfo saveLocalUser:model];
+        
     } fail:^(NSError * _Nullable error) {
         [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error]];
     }];

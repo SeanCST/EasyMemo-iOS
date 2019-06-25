@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"搜索笔记";
     self.view.backgroundColor = [UIColor whiteColor];
     
     // 设置 UI
@@ -86,6 +87,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     EMProjectDetailViewController *detailVc = [[EMProjectDetailViewController alloc] initWithProjectModel:self.searchedResults[indexPath.row]];
     [self.navigationController pushViewController:detailVc animated:YES];
 }

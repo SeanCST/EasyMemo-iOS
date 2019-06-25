@@ -7,4 +7,6 @@ target 'EasyM-iOS' do
     pod 'SDAutoLayout', '~> 2.1.3'
     pod 'SDWebImage'
     pod 'SVProgressHUD'
+
+    pod 'ChatKit'
 end

@@ -189,7 +189,15 @@
 
 #pragma mark - 点击事件
 - (void)avatarImageViewTaped {
-    EMUserInfoViewController *vc = [[EMUserInfoViewController alloc] initWithUserId:self.updatingModel.userId];
+    EMUserInfoViewController *vc;
+    
+    if (self.updatingModel) {
+        vc = [[EMUserInfoViewController alloc] initWithUserId:self.updatingModel.userId];
+    } else {
+        vc = [[EMUserInfoViewController alloc] initWithUserId:self.projectModel.userId];
+    }
+    
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

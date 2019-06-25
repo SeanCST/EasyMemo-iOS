@@ -172,8 +172,10 @@
 - (void)avatarImageViewTaped {
     NSLog(@"avatarImageViewTaped");
     
+    [self parentViewController].hidesBottomBarWhenPushed = YES; //隐藏 tabbar
     EMHeaderUploadViewController *vc = [[EMHeaderUploadViewController alloc] init];
     [[self parentViewController].navigationController pushViewController:vc animated:YES];
+    [self parentViewController].hidesBottomBarWhenPushed = NO;
 }
 
 - (void)toFollowBtnClicked {

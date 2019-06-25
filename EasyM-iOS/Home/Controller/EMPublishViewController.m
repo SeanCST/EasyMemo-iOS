@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title = @"笔记编辑";
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
 }

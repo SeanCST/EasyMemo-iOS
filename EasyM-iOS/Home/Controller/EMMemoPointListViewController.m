@@ -127,6 +127,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     self.hidesBottomBarWhenPushed = YES; //隐藏 tabbar
 
     EMPointDetailViewController *detailVc = [[EMPointDetailViewController alloc] initWithPointArr:self.memoPointArr currentIndex:indexPath.row];

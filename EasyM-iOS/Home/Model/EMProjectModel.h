@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *userImg;
+@property (nonatomic, copy) NSString *userId;
 
 @end
 

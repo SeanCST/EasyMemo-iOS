@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "EMLoginViewController.h"
 #import "EMTabBarController.h"
+#import <ChatKit/LCChatKit.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +19,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    // 开启 LeanCloud 服务
+    [LCChatKit setAppId:@"OtcPVtHcHNyt2Jc4jHswWU9i-gzGzoHsz" appKey:@"KO3u8XcGwqElMgs2EEdviiDV"];
+    //添加输入框底部「拍摄/照片/位置」插件，用于发送图片与位置信息
+    [LCCKInputViewPluginTakePhoto registerSubclass];
+    [LCCKInputViewPluginPickImage registerSubclass];
+    [LCCKInputViewPluginLocation registerSubclass];
+
     // Override point for customization after application launch.
     [self setupRootViewController];
     

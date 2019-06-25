@@ -1,8 +1,8 @@
 //
-//  EMMessageViewController.h
+//  EMMeInfoChangeController.h
 //  EasyM-iOS
 //
-//  Created by SeanCST on 2019/5/23.
+//  Created by SeanCST on 2019/6/25.
 //  Copyright © 2019 NilOrg. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMMessageViewController : UIViewController
+@interface EMMeInfoChangeController : UIViewController
 
 @end
 

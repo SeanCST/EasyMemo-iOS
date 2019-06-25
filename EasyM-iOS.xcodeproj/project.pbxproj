@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1431085022C087E800835A5B /* LCCKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1431084F22C087E800835A5B /* LCCKUser.m */; };
+		1431085322C0887C00835A5B /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1431085222C0887C00835A5B /* ChatListViewController.m */; };
 		143D2339222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */; };
 		143E1D05229EC851004ADC8D /* EMDiscoverySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D04229EC851004ADC8D /* EMDiscoverySearchViewController.m */; };
 		143E1D08229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 143E1D07229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m */; };
@@ -26,7 +28,6 @@
 		145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634BE222293FB00E3ECAD /* EMMeViewController.m */; };
 		145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 145634C12222946800E3ECAD /* EMMeHeaderView.m */; };
 		146D28F12296C519005E4992 /* EMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D28F02296C519005E4992 /* EMRegisterViewController.m */; };
-		146D28F82296D49C005E4992 /* EMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146D28F72296D49C005E4992 /* EMMessageViewController.m */; };
 		1474895C22BA19ED0060F3E5 /* EMUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1474895B22BA19ED0060F3E5 /* EMUserInfoViewController.m */; };
 		149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149DEAFF2226AFD600F4B3DE /* EMPointDetailViewController.m */; };
 		14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B94AC72221795C008E0FF8 /* EMDiscoveryViewController.m */; };
@@ -40,6 +41,7 @@
 		14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E03222024C8006D5326 /* EMHomeMemoCollectionView.m */; };
 		14BC6E0722203EF9006D5326 /* EMHomeMemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */; };
 		14C3290C22B7D90B00D07DC3 /* EMProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C3290B22B7D90B00D07DC3 /* EMProjectDetailViewController.m */; };
+		14C7D07222C1FFFA00EB3F0D /* EMMeInfoChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C7D07122C1FFFA00EB3F0D /* EMMeInfoChangeController.m */; };
 		14E4A0CA2228209400C4813D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E4A0C92228209400C4813D /* Assets.xcassets */; };
 		14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */; };
 		14F462FC22990FF100DF1CEE /* EMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F462FB22990FF100DF1CEE /* EMUserModel.m */; };
@@ -61,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1431084E22C087E800835A5B /* LCCKUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCCKUser.h; sourceTree = "<group>"; };
+		1431084F22C087E800835A5B /* LCCKUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCCKUser.m; sourceTree = "<group>"; };
+		1431085122C0887C00835A5B /* ChatListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		1431085222C0887C00835A5B /* ChatListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		143D2337222AB5E10017A0F8 /* EMMemoListHeaderScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMMemoListHeaderScrollView.h; sourceTree = "<group>"; };
 		143D2338222AB5E20017A0F8 /* EMMemoListHeaderScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMMemoListHeaderScrollView.m; sourceTree = "<group>"; };
 		143E1D03229EC851004ADC8D /* EMDiscoverySearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMDiscoverySearchViewController.h; sourceTree = "<group>"; };
@@ -99,8 +105,6 @@
 		145634C12222946800E3ECAD /* EMMeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMeHeaderView.m; sourceTree = "<group>"; };
 		146D28EF2296C519005E4992 /* EMRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMRegisterViewController.h; sourceTree = "<group>"; };
 		146D28F02296C519005E4992 /* EMRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMRegisterViewController.m; sourceTree = "<group>"; };
-		146D28F62296D49C005E4992 /* EMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMessageViewController.h; sourceTree = "<group>"; };
-		146D28F72296D49C005E4992 /* EMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMessageViewController.m; sourceTree = "<group>"; };
 		1474895A22BA19ED0060F3E5 /* EMUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMUserInfoViewController.h; sourceTree = "<group>"; };
 		1474895B22BA19ED0060F3E5 /* EMUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMUserInfoViewController.m; sourceTree = "<group>"; };
 		149DEAFE2226AFD600F4B3DE /* EMPointDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMPointDetailViewController.h; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		14BC6E0622203EF9006D5326 /* EMHomeMemoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHomeMemoCollectionViewCell.m; sourceTree = "<group>"; };
 		14C3290A22B7D90B00D07DC3 /* EMProjectDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMProjectDetailViewController.h; sourceTree = "<group>"; };
 		14C3290B22B7D90B00D07DC3 /* EMProjectDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMProjectDetailViewController.m; sourceTree = "<group>"; };
+		14C7D07022C1FFFA00EB3F0D /* EMMeInfoChangeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMeInfoChangeController.h; sourceTree = "<group>"; };
+		14C7D07122C1FFFA00EB3F0D /* EMMeInfoChangeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMeInfoChangeController.m; sourceTree = "<group>"; };
 		14E4A0C92228209400C4813D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14ED138522242A72007E3EFD /* EMMemoPointListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EMMemoPointListViewController.h; sourceTree = "<group>"; };
 		14ED138622242A72007E3EFD /* EMMemoPointListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMMemoPointListViewController.m; sourceTree = "<group>"; };
@@ -172,6 +178,22 @@
 				1FD6525BF5D19A7A40E4D5C6 /* Pods-EasyM-iOS.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		1431084C22C087D900835A5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1431084E22C087E800835A5B /* LCCKUser.h */,
+				1431084F22C087E800835A5B /* LCCKUser.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1431084D22C087D900835A5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1451A49621DF14FA00012930 = {
@@ -242,9 +264,9 @@
 		146D28F22296D467005E4992 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				1431084C22C087D900835A5B /* Model */,
+				1431084D22C087D900835A5B /* View */,
 				146D28F32296D467005E4992 /* Controller */,
-				146D28F42296D467005E4992 /* Model */,
-				146D28F52296D467005E4992 /* View */,
 			);
 			name = Message;
 			path = "EasyM-iOS/Message";
@@ -253,24 +275,10 @@
 		146D28F32296D467005E4992 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				146D28F62296D49C005E4992 /* EMMessageViewController.h */,
-				146D28F72296D49C005E4992 /* EMMessageViewController.m */,
+				1431085122C0887C00835A5B /* ChatListViewController.h */,
+				1431085222C0887C00835A5B /* ChatListViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		146D28F42296D467005E4992 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		146D28F52296D467005E4992 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		14BC6DE2221EC89B006D5326 /* Discovery */ = {
@@ -386,6 +394,8 @@
 				1451D90C229CDF1C00A13D4D /* EMHeaderUploadViewController.m */,
 				1451D90F229D28E300A13D4D /* ZYHeadImageClipController.h */,
 				1451D90E229D28E300A13D4D /* ZYHeadImageClipController.m */,
+				14C7D07022C1FFFA00EB3F0D /* EMMeInfoChangeController.h */,
+				14C7D07122C1FFFA00EB3F0D /* EMMeInfoChangeController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -618,12 +628,40 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EasyM-iOS/Pods-EasyM-iOS-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/BarButtonIcon.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/ChatKeyboard.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/DateTools.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/Emoji.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/LCCKPBLocalizations.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/LCCKPhotoBrowser.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/MBProgressHUD.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/MessageBubble.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/Other.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/Placeholder.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Resources/VoiceMessageSource.bundle",
+				"${PODS_ROOT}/ChatKit/ChatKit/Class/Module/ContactList/View/LCCKContactCell.xib",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BarButtonIcon.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ChatKeyboard.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DateTools.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Emoji.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LCCKPBLocalizations.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LCCKPhotoBrowser.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MBProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MessageBubble.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Other.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Placeholder.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/VoiceMessageSource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LCCKContactCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MWPhotoBrowser.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +699,7 @@
 				1451D90A229CDDEF00A13D4D /* UIView+Response.m in Sources */,
 				143E1D05229EC851004ADC8D /* EMDiscoverySearchViewController.m in Sources */,
 				14BC6DE9221EC931006D5326 /* EMLoginViewController.m in Sources */,
-				146D28F82296D49C005E4992 /* EMMessageViewController.m in Sources */,
+				1431085022C087E800835A5B /* LCCKUser.m in Sources */,
 				14ED138722242A72007E3EFD /* EMMemoPointListViewController.m in Sources */,
 				149DEB002226AFD600F4B3DE /* EMPointDetailViewController.m in Sources */,
 				14F46300229912E800DF1CEE /* EMUserInfo.m in Sources */,
@@ -681,6 +719,7 @@
 				14F5F2E12297D776000A8FB6 /* EMSessionManager.m in Sources */,
 				1451D910229D28E300A13D4D /* ZYHeadImageClipController.m in Sources */,
 				145634BF222293FB00E3ECAD /* EMMeViewController.m in Sources */,
+				1431085322C0887C00835A5B /* ChatListViewController.m in Sources */,
 				1474895C22BA19ED0060F3E5 /* EMUserInfoViewController.m in Sources */,
 				145634C22222946800E3ECAD /* EMMeHeaderView.m in Sources */,
 				14B94AC82221795C008E0FF8 /* EMDiscoveryViewController.m in Sources */,
@@ -688,6 +727,7 @@
 				14B94ACB22217A04008E0FF8 /* EMDiscoveryCollectionView.m in Sources */,
 				143E1D08229EE251004ADC8D /* EMDiscoverySearchTableViewCell.m in Sources */,
 				143E1D1122A03F3D004ADC8D /* EMUpdatingModel.m in Sources */,
+				14C7D07222C1FFFA00EB3F0D /* EMMeInfoChangeController.m in Sources */,
 				143E1D0B229EED93004ADC8D /* EMPublishViewController.m in Sources */,
 				14F46303229928B300DF1CEE /* EMProjectModel.m in Sources */,
 				14BC6E04222024C8006D5326 /* EMHomeMemoCollectionView.m in Sources */,
@@ -851,6 +891,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChatKit/Class/Tool/Vendor/VoiceLib",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -872,6 +916,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PZ5HQ624Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChatKit/Class/Tool/Vendor/VoiceLib",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EasyM-iOS/Supporting Files/EMPrefixHeader.pch";
 				INFOPLIST_FILE = "EasyM-iOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
